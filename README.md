@@ -24,7 +24,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 2. Vendégként, olvasóként, könyvtárosként szeretném tudni megtekinteni a könyvtár könyvállományát, és a könyvek adatait.
 3. Vendégként, olvasóként, könyvtárosként szeretnék tudni könyvekre keresni egy vagy több könyvadat megadásával.
 4. Vendégként szeretnék tudni beiratkozni (regisztrálni) a könyvtárba.
-5. Olvasóként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (nickname) kivételével.
+5. Olvasóként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (username) kivételével.
 6. Olvasóként szeretnék tudni kiiratkozni a könyvtárból, ha nincs érvényben lévő kölcsönzésem vagy kiegyenlítetlen tartozásom.
 7. Olvasóként szeretnék tudni előjegyezni könyvre.
 8. Olvasóként szeretném tudni visszavonni az előjegyzésemet.
@@ -56,19 +56,19 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 1.3. Szakterületi fogalomjegyzék
 
 - **Olvasó (Reader):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), folyamatok kezdeményezésére (pl. előjegyzés).
-	> Az adatbázisban User ID-vel, felhasználói névvel (nickname), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
+	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
 	
 	- Státusza lehet aktív (beiratkozott) / inaktív (kiiratkozott).
 	- Ha inaktív státuszban van, be tud jelentkezni a felületre, de a vendégek által elérhető funkciókon kívül csak saját adatainak módosítására és újrabeiratkozásra képes.
 	- Csak akkor kaphat kiiratkozott státuszt, ha nincs érvényben lévő kölcsönzése, és nincs tartozása.
 - **Könyvtáros (Librarian):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
 	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
-- **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárosokat foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
+- **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárost foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
 	> Az adatbázisban Library ID-vel, könyvtárnévvel, címmel, alapítási dátummal rendelkező objektum.
 	
 	- Az egyszerűség érdekében egyetlen fix könyvtár van, törlésére, adatainak módosítására és új könyvtár létrehozására nincs lehetőség. Ennek megfelelően minden entitás ehhez a könyvtárhoz tartozik.
 - **Könyv (Book):** a könyvtár állományában lévő kikölcsönözhető dokumentum.
-	> Az adatbázisban Book ID-vel, szerzővel, címmel, alcímmel, kiadó nevével, kiadó székhelyével, megjelenés évével, kiadásra vonatkozó adatokkal (pl. hanyadik kiadás), fordító nevével, illusztrátor nevével, eredeti címmel (csak fordított mű esetén), ISBN-nel rendelkező objektum.
+	> Az adatbázisban Book ID-vel, szerzővel, címmel, alcímmel, kiadó nevével, megjelenés évével, egyéb információval, ISBN-nel rendelkező objektum.
 	
 	- Lehet a könyv egyes példányaira előjegyzést tenni, azokat kölcsönbe kiadni és visszavenni.
 	- A könyv példányait külön kezeljük egy példányokat tároló tábla használatával.
@@ -85,3 +85,68 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 	
 	- Egy előjegyzés akkor válik kölcsönözhetővé, ha az előjegyzett könyvből a nem kikölcsönzött példányok száma legalább 1.
 	- Az előjegyzések kölcsönözhetővé válása az előjegyzési időpontok növekvő sorrendű figyelembe vételével történik. Például ha adott könyvre van 5 előjegyzés, és van 2 szabad példány, akkor a 2 legrégebbi előjegyzés válik kölcsönözhetővé.
+
+### 2. Tervezés
+
+#### 2.1. Architektúra terv
+
+##### 2.1.1. Oldaltérkép
+
+**Publikus**
+
+**Bejelentkezett olvasó**
+
+**Bejelentkezett inaktív olvasó**
+
+**Bejelentkezett könyvtáros**
+
+##### 2.1.2. Végpontok
+
+#### 2.2. Felhasználóifelület vázlatok
+
+#### 2.3. Osztálymodell
+
+##### 2.3.1. Adatmodell
+
+| Readers   | *Library* | Books      | Copies  | Borrows    | Appointments   |
+| --------- | -------   | ---------- | ------- | ---------- | -------------- |
+|`reader_id`|`library_id`|`book_id`  |`copy_id`|`borrow_id` |`appointment_id`|
+| username  | name      | author     |`book_id`|`user_id`   |`user_id`       |
+| fullname  | address   | title      | status  |`copy_id`   |`book_id`       |
+| email     | year      | subtitle   |         | created_at | created_at     |
+| telefon   |           | publisher  |         | deadline   |                |
+| address   |           | year       |         | closed_at  |                |
+| password  |           | isbn       |         | renewals   |                |
+| status    |           | other_info |         |            |                |
+
+##### 2.3.2. Adatbázisterv
+
+##### 2.3.3. Állapotdiagram
+
+### 3. Implementáció
+
+#### 3.1. Fejlesztői környezet
+
+#### 3.2. Könyvtárstruktúra
+
+#### 3.3. Szerveroldali fejlesztés
+
+#### 3.4. Kliensoldali fejlesztés
+
+### 4. Tesztelés
+
+#### 4.1. Minta bejelentkezési adatok
+
+#### 4.2. Tesztesetek
+
+#### 4.3. Automatizált tesztelés
+
+### 5. Felhasználói dokumentáció
+
+#### 5.1. Ajánlott hardver-, szerverkonfiguráció
+
+#### 5.2. Telepítés
+
+#### 5.3. A program használata
+
+#### 6. Felhasznált források
