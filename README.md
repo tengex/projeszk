@@ -111,7 +111,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 | Readers   | *Library* | Books      | Copies  | Borrows    | Appointments   |
 | --------- | -------   | ---------- | ------- | ---------- | -------------- |
 |`reader_id`|`library_id`|`book_id`  |`copy_id`|`borrow_id` |`appointment_id`|
-| username  | name      | author     |`book_id`|`user_id`   |`user_id`       |
+| username  | name      | author     |`book_id`|`reader_id` |`reader_id`     |
 | fullname  | address   | title      | status  |`copy_id`   |`book_id`       |
 | email     | year      | subtitle   |         | created_at | created_at     |
 | telefon   |           | publisher  |         | deadline   |                |
