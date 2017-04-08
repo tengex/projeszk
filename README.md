@@ -20,11 +20,11 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 ##### 1.2.1. Funkcionális elvárások
 
-1. Vendégként, olvasóként, könyvtárosként, adminként szeretném tudni megtekinteni a könyvtár adatait.
-2. Vendégként, olvasóként, könyvtárosként, adminként szeretném tudni megtekinteni a könyvtár könyvállományát, és a könyvek adatait.
-3. Vendégként, olvasóként, könyvtárosként, adminként szeretnék tudni könyvekre keresni egy vagy több könyvadat megadásával.
+1. Vendégként, olvasóként, könyvtárosként szeretném tudni megtekinteni a könyvtár adatait.
+2. Vendégként, olvasóként, könyvtárosként szeretném tudni megtekinteni a könyvtár könyvállományát, és a könyvek adatait.
+3. Vendégként, olvasóként, könyvtárosként szeretnék tudni könyvekre keresni egy vagy több könyvadat megadásával.
 4. Vendégként szeretnék tudni beiratkozni (regisztrálni) a könyvtárba.
-5. Olvasóként, könyvtárosként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (nickname) és státuszom kivételével.
+5. Olvasóként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (nickname) kivételével.
 6. Olvasóként szeretnék tudni kiiratkozni a könyvtárból, ha nincs érvényben lévő kölcsönzésem vagy kiegyenlítetlen tartozásom.
 7. Olvasóként szeretnék tudni előjegyezni könyvre.
 8. Olvasóként szeretném tudni visszavonni az előjegyzésemet.
@@ -44,11 +44,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 	- Ha ilyen könyvből már van az állományban, mindössze újabb példányok állományba vétele történik, akkor ki tudjam választani az adott könyvet, és csak a példányszámot kelljen megadnom.
 20. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról az előjegyzésekről, amik kölcsönözhetővé váltak.
 21. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról a kölcsönzésekről és a kölcsönzők adatairól, amelyek túllépték a kölcsönzési határidőt.
-22. Adminként szeretném tudni az olvasók felhasználói adatait módosítani a felhasználói név (nickname) kivételével.
-23. Adminként szeretném tudni az olvasókat kiiratkozott / (újra beiratkozás esetén) beiratkozott státuszúra állítani. Kiiratkoztatni csak akkor, ha nincs érvényben lévő kölcsönzése vagy tartozása.
-24. Adminként szeretnék tudni új könyvtárost regisztrálni.
-25. Adminként szeretném tudni a könyvtárosok felhasználó adatait módosítani.
-26. Adminként szeretném tudni a könyvtárosok státuszát (felmondás esetén) inaktívra / aktívra állítani.
+22. Könyvtárosként szeretném tudni az olvasókat kiiratkozott / (újra beiratkozás esetén) beiratkozott státuszúra állítani. Kiiratkoztatni csak akkor, ha nincs érvényben lévő kölcsönzése vagy tartozása.
 
 ##### 1.2.2. Nem funkcionális elvárások
 
@@ -59,31 +55,33 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 #### 1.3. Szakterületi fogalomjegyzék
 
-- Olvasó (Reader): olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), folyamatok kezdeményezésére (pl. előjegyzés).
-	- Az adatbázisban User ID-vel, felhasználói névvel (nickname), teljes névvel, jogkörrel (reader), email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
-	- Technikailag egy táblába kerül a könyvtárosok adataival, ezt a "jogkör" attribútum használata teszi lehetővé.
+- **Olvasó (Reader):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), folyamatok kezdeményezésére (pl. előjegyzés).
+	> Az adatbázisban User ID-vel, felhasználói névvel (nickname), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
+	
 	- Státusza lehet aktív (beiratkozott) / inaktív (kiiratkozott).
 	- Ha inaktív státuszban van, be tud jelentkezni a felületre, de a vendégek által elérhető funkciókon kívül csak saját adatainak módosítására és újrabeiratkozásra képes.
 	- Csak akkor kaphat kiiratkozott státuszt, ha nincs érvényben lévő kölcsönzése, és nincs tartozása.
-- Könyvtáros (Librarian): olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
-	- Az adatbázisban User ID-vel, felhasználói névvel (nickname), teljes névvel, jogkörrel (librarian), email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
-	- Technikailag egy táblába kerül az olvasók adataival, ezt a "jogkör" attribútum használata teszi lehetővé.
-	- Státusza lehet aktív / inaktív.
-	- Ha inaktív státuszban van, be tud jelentkezni a felületre, de a vendégek által elérhető funkciókon kívül csak saját adatainak módosítására képes.
-- Könyvtár (Library): olyan intézmény, amely könyveket tárol, könyvtárosokat foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
-	- Az adatbázisban Library ID-vel, könyvtárnévvel, címmel, alapítási dátummal rendelkező objektum.
-	- Jelen alkalmazás egyetlen statikus könyvtárat tartalmaz, törlésére, adatainak módosítására és új könyvtár létrehozására nincs lehetőség. Ennek megfelelően minden entitás ehhez a könyvtárhoz tartozik, így a Library ID feltüntetésére máshol már nincs szükség.
-- Könyv (Book): a könyvtár állományában lévő kikölcsönözhető dokumentum.
-	- Az adatbázisban Book ID-vel, szerzővel, címmel, alcímmel, kiadó nevével, kiadó székhelyével, megjelenés évével, kiadásra vonatkozó adatokkal (pl. hanyadik kiadás), fordító nevével, illusztrátor nevével, eredeti címmel (csak fordított mű esetén), ISBN-nel rendelkező objektum.
+- **Könyvtáros (Librarian):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
+	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
+- **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárosokat foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
+	> Az adatbázisban Library ID-vel, könyvtárnévvel, címmel, alapítási dátummal rendelkező objektum.
+	
+	- Az egyszerűség érdekében egyetlen fix könyvtár van, törlésére, adatainak módosítására és új könyvtár létrehozására nincs lehetőség. Ennek megfelelően minden entitás ehhez a könyvtárhoz tartozik.
+- **Könyv (Book):** a könyvtár állományában lévő kikölcsönözhető dokumentum.
+	> Az adatbázisban Book ID-vel, szerzővel, címmel, alcímmel, kiadó nevével, kiadó székhelyével, megjelenés évével, kiadásra vonatkozó adatokkal (pl. hanyadik kiadás), fordító nevével, illusztrátor nevével, eredeti címmel (csak fordított mű esetén), ISBN-nel rendelkező objektum.
+	
 	- Lehet a könyv egyes példányaira előjegyzést tenni, azokat kölcsönbe kiadni és visszavenni.
 	- A könyv példányait külön kezeljük egy példányokat tároló tábla használatával.
-- Példány (Copy): egy adott könyv példánya.
-	- Az adatbázisban Copy ID-vel, Book ID-vel, státusszal rendelkező objektum.
+- **Példány (Copy):** egy adott könyv példánya.
+	> Az adatbázisban Copy ID-vel, Book ID-vel, státusszal rendelkező objektum.
+	
 	- A státusz lehet kölcsönzött (borrowed) / elérhető (available).
-- Kölcsönzés (Borrow): az olvasók kikölcsönözhetik a könyveket, amelyekre korábban előjegyeztek. A kölcsönzés befejeztével a kölcsönzés adatai nem törlődnek.
-	- Az adatbázisban Borrow ID-vel, User ID-vel, Copy ID-vel, kölcsönzés kezdő időponttal, kölcsönzés lejárati időponttal, kölcsönzés befejezési időponttal, meghosszabítások számával rendelkező objektum.
+- **Kölcsönzés (Borrow):** az olvasók kikölcsönözhetik a könyveket, amelyekre korábban előjegyeztek. A kölcsönzés befejeztével a kölcsönzés adatai nem törlődnek.
+	> Az adatbázisban Borrow ID-vel, User ID-vel, Copy ID-vel, kölcsönzés kezdő időponttal, kölcsönzés lejárati időponttal, kölcsönzés befejezési időponttal, meghosszabítások számával rendelkező objektum.
+	
 	- A kölcsönzés létrejöttekor ki lehet választani a kölcsönzendő példányt a könyv szabad példányai közül.
-- Előjegyzés (Appointment): az olvasók előjegyezhetik a könyveket. A könyvtáros az előjegyzés alapján kölcsönzést rögzít, amikor a könyv fizikailag kiadásra kerül a könyvtárból. A kölcsönzés rögzítésekor az előjegyzés rekordja törlődik.
-	- Az adatbázisban Appointment ID-vel, User ID-vel, Book ID-vel, előjegyzési időponttal rendelkező objektum.
+- **Előjegyzés (Appointment):** az olvasók előjegyezhetik a könyveket. A könyvtáros az előjegyzés alapján kölcsönzést rögzít, amikor a könyv fizikailag kiadásra kerül a könyvtárból. A kölcsönzés rögzítésekor az előjegyzés rekordja törlődik.
+	> Az adatbázisban Appointment ID-vel, User ID-vel, Book ID-vel, előjegyzési időponttal rendelkező objektum.
+	
 	- Egy előjegyzés akkor válik kölcsönözhetővé, ha az előjegyzett könyvből a nem kikölcsönzött példányok száma legalább 1.
 	- Az előjegyzések kölcsönözhetővé válása az előjegyzési időpontok növekvő sorrendű figyelembe vételével történik. Például ha adott könyvre van 5 előjegyzés, és van 2 szabad példány, akkor a 2 legrégebbi előjegyzés válik kölcsönözhetővé.
