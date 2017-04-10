@@ -56,7 +56,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 1.3. Szakterületi fogalomjegyzék
 
 - **Olvasó (Reader):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), folyamatok kezdeményezésére (pl. előjegyzés).
-	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval és státusszal rendelkező objektum.
+	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, státusszal, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
 	
 	- Státusza lehet aktív (beiratkozott) / inaktív (kiiratkozott).
 	- Ha inaktív státuszban van, be tud jelentkezni a felületre, de a vendégek által elérhető funkciókon kívül csak saját adatainak módosítására és újrabeiratkozásra képes.
@@ -118,6 +118,8 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 | address   |           | year       |         | closed_at  |                |
 | password  |           | isbn       |         | renewals   |                |
 | status    |           | other_info |         |            |                |
+| paid_amount||||||
+| fee_amount||||||
 
 ##### 2.3.2. Adatbázisterv
 
