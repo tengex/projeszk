@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by Bázis on 2017. 04. 14..
  */
 @Controller
-public class DefaultController {
+public class DefaultContextController {
     @RequestMapping("/")
     public String redirectRoot(){
         return "redirect:index";
