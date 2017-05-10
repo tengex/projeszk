@@ -1,0 +1,8 @@
+table.vertical-center > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.vertical-margin {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

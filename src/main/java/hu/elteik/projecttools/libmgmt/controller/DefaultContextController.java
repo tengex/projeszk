@@ -20,4 +20,10 @@ public class DefaultContextController {
         model.put("message", "Hello, World!");
         return "index";
     }
+
+    @RequestMapping("/book_list")
+    public String book_list(Map<String,Object> model){
+        //model.put("message", "Könyvtár adatai!");
+        return "book_list";
+    }
 }

@@ -1,61 +1,65 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Hello World!</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>BestLib Zrt. – Főoldal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-theme.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-theme.css}" />
 
-    <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}"/>
+    <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
 </head>
+
 <body>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Mobile navbar magic, don't touch! -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Mobile navbar magic, don't touch! -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
 
-            <div class="navbar-brand"><img th:src="@{/img/logo_white_small.png}"/>
+                <div class="navbar-brand">
+                    <img th:src="@{/img/logo_white_small.png}" />
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" bookId="bs-example-navbar-collapse-1">
+                <!-- left side of the navbar -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/index}">Főoldal <span class="sr-only">(jelenlegi)</span></a></li>
+                    <li><a th:href="@{/book_list}">Könyvlista</a></li>
+                </ul>
+
+                <!-- right side of the navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><small>Nyitvatartás: kedd-péntek 9-18 óra<br/>1099 Budapest, Szent György tér 11.</small>
+                    </li>
+                    <li>
+                        <a style="pointer-events: none"><strong><span th:text="'BestLib Zrt.'"></span></strong></a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="collapse navbar-collapse" bookId="bs-example-navbar-collapse-1">
-            <!-- left side of the navbar -->
-            <ul class="nav navbar-nav">
-                <li>
-                    <a th:href="@{/helloworld}">Hello</a>
-                </li>
-            </ul>
+    </nav>
 
-            <!-- right side of the navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a style="pointer-events: none"><strong><span th:text="'BestLib Zrt.'"></span></strong></a>
-                </li>
-            </ul>
+    <div class="container">
+        <div class="starter-template">
+            <h1>Spring Boot Web Thymeleaf Example</h1>
+            <h2>
+                <!--/*@thymesVar bookId="message" type="java.lang.String"*/-->
+                <span th:text="${message}"></span>
+            </h2>
         </div>
     </div>
-</nav>
 
-<div class="container">
-    <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
-        <h2>
-            <!--/*@thymesVar bookId="message" type="java.lang.String"*/-->
-            <span th:text="${message}"></span>
-        </h2>
-    </div>
-</div>
-
-<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
 </body>
+
 </html>
