@@ -6,55 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-theme.css}"/>
 
     <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}"/>
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <!-- Mobile navbar magic, don't touch! -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <div class="navbar-brand"><img th:src="@{/img/logo_white_small.png}"/>
-            </div>
-        </div>
-        <div class="collapse navbar-collapse" bookId="bs-example-navbar-collapse-1">
-            <!-- left side of the navbar -->
-            <ul class="nav navbar-nav">
-                <li>
-                    <a th:href="@{/helloworld}">Hello</a>
-                </li>
-            </ul>
-
-            <!-- right side of the navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a style="pointer-events: none"><strong><span th:text="'BestLib Zrt.'"></span></strong></a>
-                </li>
-            </ul>
-        </div>
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+      <a class="navbar-brand page-scroll" href="#page-top"> <i class="fa fa-paper-plane-o"></i> BESTLIB</a> </div>
+    
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <li class="hidden"> <a href="#page-top"></a> </li>
+        <li> <a class="page-scroll" href="#about">Konyveink</a> </li>
+        <li> <a class="page-scroll" href="#services">Regisztracio</a> </li>
+        <li> <a class="page-scroll" href="#works">Login</a> </li>
+    <!-- Belepes utan lathato menupontok -->
+        <li> <a class="page-scroll" href="#team">Motyo1</a> </li>
+        <li> <a class="page-scroll" href="#testimonials">Motyo2</a> </li>
+        <li> <a class="page-scroll" href="#contact">Motyo3</a> </li>
+      </ul>
     </div>
+  </div>
 </nav>
 
-<div class="container">
-    <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
-        <h2>
-            <!--/*@thymesVar bookId="message" type="java.lang.String"*/-->
-            <span th:text="${message}"></span>
-        </h2>
+<!-- Header -->
+<div id="intro">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1>BEST LIB</h1>
+          <p class="intro-text">Valami gomb</p>
+          <a href="#about" class="btn btn-default learn-more-btn page-scroll">Tudj meg tobbet</a> </div>
+      </div>
     </div>
+  </div>
 </div>
-
+<div id="content">
+  <div class="container">
+    <div class="section-title text-center center">
+      <h2>A projetkrol valami mutyi</h2>
+      <hr></hr>
+    </div>
+    <div class="row">
+      <div class="col-md-4"><img src="img/bg.jpg" class="img-responsive" alt="valami masik kep"></img></div>
+      <div class="col-md-4">
+        <div class="about-text">
+          <h4>Ide is</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum. </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="about-text">
+          <h4>Ide meg meg inkabb</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam.</p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing commodo</li>
+            <li>Duis sed dapibus leo sed dapibus</li>
+            <li>Sed commodo nibh ante bibendum</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div id="footer">
+  <div class="container">
+    <p>Copyright &copy; Projekt eszkozok csapat</p>
+  </div>
+</div>
 <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
 </body>
