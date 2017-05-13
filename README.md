@@ -101,6 +101,8 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 **Bejelentkezett könyvtáros**
 
 ##### 2.1.2. Végpontok
+- **GET/index:** Főoldal
+- **GET/book_list:** Könyveink
 
 #### 2.2. Felhasználóifelület vázlatok
 
@@ -117,7 +119,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 | telefon   |           | publisher  |         | deadline   |                |
 | address   |           | year       |         | closed_at  |                |
 | password  |           | isbn       |         | renewals   |                |
-| status    |           | other_info |         |            |                |
+| status    |           | details    |         |            |                |
 | paid_amount||||||
 | fee_amount||||||
 
@@ -132,8 +134,20 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 3.2. Könyvtárstruktúra
 
 #### 3.3. Szerveroldali fejlesztés
+##### Dokumentáció generálás
+A *projeszk/javadoc* mappába minden commitnál generáljunk Java dokumentációt!
 
 #### 3.4. Kliensoldali fejlesztés
+
+#### 3.5. Kódtár használata
+1. Mindenki külön branchek vagy forkolás használatával dolgozik.
+2. Ha valaki elkészült egy programrésszel, készít egy pull requestet és mindenki véleményezi!
+3. A fölösleges fájlokat ne commitoljuk! Ilyenek például az IDE által hagyott bináris fájlok és a *target* mappa tartalma! Commit előtt mindig nyomjunk egy ``` mvn clean ``` parancsot a  *projeszk* mappában!
+4. Változások stagelése, commitolása és pusholása (a *projeszk* mappából):
+	- ``` mvn clean ```
+	- ``` git add . ```
+	- ``` git commit -am "Változtatás leírása" ```
+	- ``` git push ```
 
 ### 4. Tesztelés
 
@@ -148,6 +162,32 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 5.1. Ajánlott hardver-, szerverkonfiguráció
 
 #### 5.2. Telepítés
+##### 1. PostgreSQL telepítése (Ubuntu)
+``` sudo apt-get install postgresql postgresql-contrib ```
+
+``` sudo -u postgres psql postgres ```
+
+``` \password Rep1l2t34 ```
+
+Üres adatbázis létrehozása a következő névvel: *library*
+
+##### 2. Maven telepítése (Ubuntu)
+``` sudo apt install maven ```
+
+##### 3/a Master klónozása
+``` git clone https://github.com/tengex/projeszk.git ```
+
+##### 3/b Tetszőleges branch klónozása
+``` git clone -b BRANCH_NEVE --single-branch https://github.com/tengex/projeszk.git ```
+
+##### 4. Futtatás
+
+A ```projeszk``` mappából parancssorral:
+
+``` mvn spring-boot:run ```
+
+URL: ```http://localhost:8080/```
+
 
 #### 5.3. A program használata
 

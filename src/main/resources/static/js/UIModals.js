@@ -15,6 +15,28 @@ var UIModals = (function () {
             }
         },
 
+        showAddBookForm: function () {
+            if (!UIModals.modalShown) {
+                //$('#addBook_modalForm').validator(customValidations);
+                //$('#addBook_modalForm').validator('update');
+                $('#addBook_modalForm')[0].reset();
+
+                $('#addBook_modal').on('show.bs.modal', function () {
+                    UIModals.modalShown = true;
+                });
+                $('#addBook_modal').on('hidden.bs.modal', function () {
+                    UIModals.modalShown = false;
+                });
+
+                /*$('.modal').on('shown.bs.modal', function () { // autofókusz az inputmezőre
+                    $(this).find('[autofocus]').focus();
+                });*/
+
+                $('#addBook_modal').modal('show');
+                //UIExecutions.alreadySubmitted = false;
+            }
+        },
+
         showModal: function (modal) {
             if (!UIModals.modalShown) {
                 $('#insertModal').empty();

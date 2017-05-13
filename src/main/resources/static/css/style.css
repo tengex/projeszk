@@ -246,3 +246,7 @@ table.vertical-center > tbody > tr > td {
     margin-top: 4px;
     margin-bottom: 4px;
 }
+
+.no-display {
+    display: none;
+}
