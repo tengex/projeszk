@@ -6,184 +6,157 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-theme.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-
-    <!--<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>-->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css" th:href="@{/css/bootstrap-theme.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
 
     <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
 </head>
 
 <body>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <!-- Mobile navbar magic, don't touch! -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-                <div class="navbar-brand">
-                    <img th:src="@{/img/logo_white_small.png}" />
-                </div>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
             </div>
-            <div class="collapse navbar-collapse" bookId="bs-example-navbar-collapse-1">
-                <!-- left side of the navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a th:href="@{/index}">Főoldal</a></li>
-                    <li class="active"><a th:href="@{/book_list}">Könyvlista <span class="sr-only">(jelenlegi)</span></a></li>
-                </ul>
 
-                <!-- right side of the navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <small>Nyitvatartás: kedd-péntek 9-18 óra
-                            <br/>1099 Budapest, Szent György tér 11.</small>
-                    </li>
-                    <li>
-                        <a style="pointer-events: none"><strong><span th:text="'BestLib Zrt.'"></span></strong></a>
-                    </li>
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden"> <a href="#page-top"></a> </li>
+                    <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
+                    <li> <a href="index.html" th:href="@{/index}">Főoldal</a> </li>
+                    <li> <a href="book_list.html" th:href="@{/book_list}">Könyveink</a> </li>
+                    <!-- Belepes utan lathato menupontok OLVASOKNAK -->
+                    <li> <a>|</a> </li>
+                    <li> <a href="#team">Adataim</a> </li>
+                    <li> <a href="#testimonials">Kölcsönzéseim</a> </li>
+                    <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
+                    <!--<li> <a>|</a> </li>
+                    <li> <a href="#team">Kölcsönzések</a> </li>
+                    <li> <a href="#testimonials">Olvasók</a> </li>-->
+                    <!-- Bejelentkezes elott lathato menupontok -->
+                    <li> <a>|</a> </li>
+                    <li> <a href="#services">Regisztráció</a> </li>
+                    <li> <a href="#works">Login</a> </li>
+                    <!-- Bejelentkezes utan lathato menupont -->
+                    <!--<li> <a href="#works">Logout</a> </li>-->
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="starter-template">
-            <h1>Könyvek listája</h1>
+    <div id="content">
+        <div class="container">
+            <div class="starter-template">
+                <h1>Könyvek listája</h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Találatok szűrése:</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="form-group vertical-margin">
+                            <label for="filter_title_part">Cím vagy alcím tartalmazza: </label>
+                            <input type="text" class="form-control" id="title_part" placeholder="cím egy része" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_author">Szerző:</label>
+                            <input type="email" class="form-control" id="filter_author" placeholder="Jane Doe" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_publisher">Kiadó:</label>
+                            <input type="email" class="form-control" id="filter_publisher" placeholder="kiadó nevének egy része" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_year">Kiadás éve:</label>
+                            <input type="email" class="form-control" id="filter_year" placeholder="2000" />
+                        </div>
+                        <button class="btn btn-default vertical-margin">Szűrés</button>
+                    </form>
+                </div>
+            </div>
+
+            <table class="table table-hover table-bordered table-striped vertical-center">
+                <tr>
+                    <th class="col-xs-3 text-center">Cím</th>
+                    <th class="col-xs-3 text-center">Szerző</th>
+                    <th class="col-xs-1 text-center">Kiadó</th>
+                    <th class="col-xs-1 text-center">Kiadás éve</th>
+                    <th class="col-xs-2 text-center">ISBN</th>
+                    <th class="col-xs-1 text-center">Oldalszám</th>
+                    <th class="col-xs-1 text-center">Tevékenységek</th>
+                </tr>
+                <tr th:each="book : ${bookList}" id="book_1_row" th:id="'book_' + (${book.bookId}) + '_row'">
+                    <td><span th:text="${book.title}">cím</span>
+                        <br/>
+                        <small>
+                            <em th:text="${book.subtitle}">alcím</em>
+                        </small>
+                    </td>
+                    <td th:text="${book.author}">szerző</td>
+                    <td th:text="${book.publisher}">kiadó</td>
+                    <td class="text-center" th:text="${book.year}">év</td>
+                    <td class="text-center" th:text="${book.isbn}">isbn</td>
+                    <td class="text-center" th:text="${book.details}">oldalszám</td>
+                    <td class="text-center">
+                        <button class="btn btn-info btn-xs" onclick="javascript:UIModals.showCopies(1)" th:onclick="'javascript:UIModals.showCopies(' + ${book.bookId} + ')'">Példányok</button>
+                        <button class="btn btn-primary btn-xs">Előjegyzés</button>
+                    </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Találatok szűrése:</h3>
-            </div>
-            <div class="panel-body">
-                <form class="form-inline">
-                    <div class="form-group vertical-margin">
-                        <label for="filter_title_part">Cím vagy alcím tartalmazza: </label>
-                        <input type="text" class="form-control" id="title_part" placeholder="cím egy része" />
+        <div th:each="book : ${bookList}" id="book_1_copies_modal" th:id="'book_' + (${book.bookId}) + '_copies_modal'" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+                        <h4 class="modal-title">Példányok listája</h4>
+                        <br/>
+                        <table class="table table-hover table-bordered table-condensed table-striped vertical-center">
+                            <tr>
+                                <td><span th:text="${book.title}">cím</span>
+                                    <br/>
+                                    <small>
+                                        <em th:text="${book.subtitle}">alcím</em>
+                                    </small>
+                                </td>
+                                <td th:text="${book.author}">szerző</td>
+                                <td th:text="${book.isbn}">isbn</td>
+                            </tr>
+                        </table>
+                        <table class="table table-hover table-bordered table-condensed table-striped vertical-center">
+                            <tr>
+                                <th class="col-xs-6">Példány azonosítója</th>
+                                <th class="col-xs-6">Státusz</th>
+                            </tr>
+                            <tr th:each="copy : ${book.copies}" th:class="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)? 'success' : 'danger'}">
+                                <td th:text="${copy.copyId}">copyId</td>
+                                <td th:text="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)? 'Elérhető' : 'Kölcsönzött'}">copyStatus</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="form-group vertical-margin">
-                        <label for="filter_author">Szerző:</label>
-                        <input type="email" class="form-control" id="filter_author" placeholder="Jane Doe" />
+                    <div class="modal-footer form-group">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Bezárás</button>
                     </div>
-                    <div class="form-group vertical-margin">
-                        <label for="filter_publisher">Kiadó:</label>
-                        <input type="email" class="form-control" id="filter_publisher" placeholder="kiadó nevének egy része" />
-                    </div>
-                    <div class="form-group vertical-margin">
-                        <label for="filter_year">Kiadás éve:</label>
-                        <input type="email" class="form-control" id="filter_year" placeholder="2000" />
-                    </div>
-                    <button class="btn btn-default vertical-margin">Szűrés</button>
-                </form>
+                </div>
             </div>
         </div>
-
-        <table class="table table-hover table-bordered table-striped vertical-center">
-            <tr>
-                <th class="col-xs-3">Cím</th>
-                <th class="col-xs-3">Szerző</th>
-                <th class="col-xs-1">Kiadó</th>
-                <th class="col-xs-1">Kiadás éve</th>
-                <th class="col-xs-2">ISBN</th>
-                <th class="col-xs-1">Egyéb</th>
-                <th class="col-xs-1">Tevékenységek</th>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-            <tr>
-                <td>Cím
-                    <br/>
-                    <small>
-                        <em>Alcím</em>
-                    </small>
-                </td>
-                <td>Balogh Sándor</td>
-                <td>Könyvkiadó</td>
-                <td class="text-center">2001</td>
-                <td>‎978-3-16-148410-0</td>
-                <td>–</td>
-                <td class="text-center"><button class="btn btn-primary">Előjegyzés</button></td>
-            </tr>
-        </table>
     </div>
-
-    <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-
 </body>
 
 </html>
