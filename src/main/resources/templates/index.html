@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Hello World!</title>
+    <title>BESTLIB – Főoldal</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
@@ -46,8 +46,8 @@
                     <li> <a href="#testimonials">Olvasók</a> </li>-->
                     <!-- Bejelentkezes elott lathato menupontok -->
                     <li> <a>|</a> </li>
-                    <li> <a href="#services">Regisztráció</a> </li>
-                    <li> <a href="#works">Login</a> </li>
+                    <li> <a href="registration.html" th:href="@{/registration}">Regisztráció</a> </li>
+                    <li> <a href="login.html" th:href="@{/login}">Login</a> </li>
                     <!-- Bejelentkezes utan lathato menupont -->
                     <!--<li> <a href="#works">Logout</a> </li>-->
                 </ul>
@@ -72,11 +72,11 @@
         <div class="container">
             <div class="section-title text-center center">
                 <h2>A projektről valami mutyi</h2>
-                <hr></hr>
+                <hr />
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="img/bg.jpg" class="img-responsive" alt="valami másik kép"></img>
+                    <img src="img/bg.jpg" class="img-responsive" alt="valami másik kép" />
                 </div>
                 <div class="col-md-4">
                     <div class="about-text">

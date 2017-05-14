@@ -18356,3 +18356,230 @@ java.lang.IllegalStateException: Neither BindingResult nor plain target object f
 2017-05-14 01:30:39.108  INFO 11468 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization started
 2017-05-14 01:30:39.144  INFO 11468 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization completed in 36 ms
 2017-05-14 01:36:13.156  INFO 11468 --- [Thread-3] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@567ce93: startup date [Sun May 14 01:30:16 CEST 2017]; root of context hierarchy
+2017-05-14 16:18:01.734  INFO 12299 --- [main] h.e.p.l.App                              : Starting App on tengex-X550LB with PID 12299 (/media/tengex/Storage1/Egyetem/16-17-2/PROJESZK/repo/projeszk/target/classes started by tengex in /media/tengex/Storage1/Egyetem/16-17-2/PROJESZK/repo/projeszk)
+2017-05-14 16:18:01.747 DEBUG 12299 --- [main] h.e.p.l.App                              : Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE
+2017-05-14 16:18:01.748  INFO 12299 --- [main] h.e.p.l.App                              : No active profile set, falling back to default profiles: default
+2017-05-14 16:18:02.117  INFO 12299 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5b08c400: startup date [Sun May 14 16:18:02 CEST 2017]; root of context hierarchy
+2017-05-14 16:18:04.304  INFO 12299 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$52a52e0d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-05-14 16:18:05.098  INFO 12299 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-05-14 16:18:05.132  INFO 12299 --- [main] o.a.c.c.StandardService                  : Starting service Tomcat
+2017-05-14 16:18:05.135  INFO 12299 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-05-14 16:18:05.272  INFO 12299 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2017-05-14 16:18:05.273  INFO 12299 --- [localhost-startStop-1] o.s.w.c.ContextLoader                    : Root WebApplicationContext: initialization completed in 3160 ms
+2017-05-14 16:18:05.546  INFO 12299 --- [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-14 16:18:05.552  INFO 12299 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-14 16:18:05.553  INFO 12299 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-14 16:18:05.553  INFO 12299 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-14 16:18:05.554  INFO 12299 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-14 16:18:05.998  INFO 12299 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-05-14 16:18:06.026  INFO 12299 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-05-14 16:18:06.215  INFO 12299 --- [main] o.h.Version                              : HHH000412: Hibernate Core {5.0.11.Final}
+2017-05-14 16:18:06.216  INFO 12299 --- [main] o.h.c.Environment                        : HHH000206: hibernate.properties not found
+2017-05-14 16:18:06.218  INFO 12299 --- [main] o.h.c.Environment                        : HHH000021: Bytecode provider name : javassist
+2017-05-14 16:18:06.303  INFO 12299 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-05-14 16:18:06.910  INFO 12299 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-05-14 16:18:07.483  INFO 12299 --- [main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-05-14 16:18:07.501  INFO 12299 --- [main] o.h.t.BasicTypeRegistry                  : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@382651f7
+2017-05-14 16:18:08.435  INFO 12299 --- [main] o.h.t.h.SchemaExport                     : HHH000227: Running hbm2ddl schema export
+2017-05-14 16:18:08.437 DEBUG 12299 --- [main] o.h.SQL                                  : alter table appointments drop constraint FKodd2n8gnjqu9n4xc3e2hy6kq0
+2017-05-14 16:18:08.609 DEBUG 12299 --- [main] o.h.SQL                                  : alter table appointments drop constraint FK886ced1atxgvnf1o3oxtj5m4s
+2017-05-14 16:18:08.631 DEBUG 12299 --- [main] o.h.SQL                                  : alter table books_copies drop constraint FKmk7joyk7gxpgs1j87ep9o73re
+2017-05-14 16:18:08.642 DEBUG 12299 --- [main] o.h.SQL                                  : alter table books_copies drop constraint FKl3jur0xjsyc24rdpxn0awdxii
+2017-05-14 16:18:08.653 DEBUG 12299 --- [main] o.h.SQL                                  : alter table borrows drop constraint FKc97mdkmbnxrry925g06wah4el
+2017-05-14 16:18:08.664 DEBUG 12299 --- [main] o.h.SQL                                  : alter table borrows drop constraint FKd64ttskt7j96v1nqtpry3pp2a
+2017-05-14 16:18:08.675 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_appointments drop constraint FKdn3ifck6y78ud26ex0iknm1gg
+2017-05-14 16:18:08.687 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_appointments drop constraint FK6utmewc4joplp1c02i79ynp17
+2017-05-14 16:18:08.698 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_borrows drop constraint FK4uqou8r7onrdssfsjafg18wfc
+2017-05-14 16:18:08.709 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_borrows drop constraint FKm1kbu51g3lcimgval5n5o3vt1
+2017-05-14 16:18:08.720 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists appointments cascade
+2017-05-14 16:18:08.776 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists books cascade
+2017-05-14 16:18:08.787 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists books_copies cascade
+2017-05-14 16:18:08.798 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists borrows cascade
+2017-05-14 16:18:08.810 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists copies cascade
+2017-05-14 16:18:08.821 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists library cascade
+2017-05-14 16:18:08.843 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists preferences cascade
+2017-05-14 16:18:08.854 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists users cascade
+2017-05-14 16:18:08.888 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists users_appointments cascade
+2017-05-14 16:18:08.899 DEBUG 12299 --- [main] o.h.SQL                                  : drop table if exists users_borrows cascade
+2017-05-14 16:18:08.910 DEBUG 12299 --- [main] o.h.SQL                                  : create table appointments (appointment_id  bigserial not null, creation_date timestamp, book_id int8, user_id int8, primary key (appointment_id))
+2017-05-14 16:18:09.177 DEBUG 12299 --- [main] o.h.SQL                                  : create table books (book_id  bigserial not null, author varchar(255) not null, details varchar(255), isbn varchar(255) not null, publisher varchar(255) not null, subtitle varchar(255), title varchar(255) not null, year int4 not null, primary key (book_id))
+2017-05-14 16:18:09.277 DEBUG 12299 --- [main] o.h.SQL                                  : create table books_copies (book_book_id int8 not null, copies_copy_id int8 not null, primary key (book_book_id, copies_copy_id))
+2017-05-14 16:18:09.333 DEBUG 12299 --- [main] o.h.SQL                                  : create table borrows (borrow_id  bigserial not null, borrow_date timestamp, close_date timestamp, expiry_date timestamp, status varchar(255), copy_id int8, user_id int8, primary key (borrow_id))
+2017-05-14 16:18:09.389 DEBUG 12299 --- [main] o.h.SQL                                  : create table copies (copy_id  bigserial not null, copy_status varchar(255), primary key (copy_id))
+2017-05-14 16:18:09.467 DEBUG 12299 --- [main] o.h.SQL                                  : create table library (library_id  bigserial not null, address varchar(255) not null, date_of_establishment timestamp not null, description varchar(255), name varchar(255) not null, primary key (library_id))
+2017-05-14 16:18:09.578 DEBUG 12299 --- [main] o.h.SQL                                  : create table preferences (key varchar(255) not null, value varchar(255), primary key (key))
+2017-05-14 16:18:09.656 DEBUG 12299 --- [main] o.h.SQL                                  : create table users (user_id  bigserial not null, address varchar(255), email varchar(255) not null, fee_amount int4, full_name varchar(255) not null, paid_amount int4, password varchar(255) not null, phone_num varchar(255), status varchar(255) not null, username varchar(255) not null, primary key (user_id))
+2017-05-14 16:18:09.734 DEBUG 12299 --- [main] o.h.SQL                                  : create table users_appointments (user_user_id int8 not null, appointments_appointment_id int8 not null, primary key (user_user_id, appointments_appointment_id))
+2017-05-14 16:18:09.789 DEBUG 12299 --- [main] o.h.SQL                                  : create table users_borrows (user_user_id int8 not null, borrows_borrow_id int8 not null, primary key (user_user_id, borrows_borrow_id))
+2017-05-14 16:18:09.834 DEBUG 12299 --- [main] o.h.SQL                                  : alter table appointments add constraint FKodd2n8gnjqu9n4xc3e2hy6kq0 foreign key (book_id) references books
+2017-05-14 16:18:09.901 DEBUG 12299 --- [main] o.h.SQL                                  : alter table appointments add constraint FK886ced1atxgvnf1o3oxtj5m4s foreign key (user_id) references users
+2017-05-14 16:18:09.912 DEBUG 12299 --- [main] o.h.SQL                                  : alter table books_copies add constraint FKmk7joyk7gxpgs1j87ep9o73re foreign key (copies_copy_id) references copies
+2017-05-14 16:18:09.923 DEBUG 12299 --- [main] o.h.SQL                                  : alter table books_copies add constraint FKl3jur0xjsyc24rdpxn0awdxii foreign key (book_book_id) references books
+2017-05-14 16:18:09.934 DEBUG 12299 --- [main] o.h.SQL                                  : alter table borrows add constraint FKc97mdkmbnxrry925g06wah4el foreign key (copy_id) references copies
+2017-05-14 16:18:09.956 DEBUG 12299 --- [main] o.h.SQL                                  : alter table borrows add constraint FKd64ttskt7j96v1nqtpry3pp2a foreign key (user_id) references users
+2017-05-14 16:18:09.968 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_appointments add constraint FKdn3ifck6y78ud26ex0iknm1gg foreign key (appointments_appointment_id) references appointments
+2017-05-14 16:18:10.001 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_appointments add constraint FK6utmewc4joplp1c02i79ynp17 foreign key (user_user_id) references users
+2017-05-14 16:18:10.012 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_borrows add constraint FK4uqou8r7onrdssfsjafg18wfc foreign key (borrows_borrow_id) references borrows
+2017-05-14 16:18:10.023 DEBUG 12299 --- [main] o.h.SQL                                  : alter table users_borrows add constraint FKm1kbu51g3lcimgval5n5o3vt1 foreign key (user_user_id) references users
+2017-05-14 16:18:10.035  INFO 12299 --- [main] o.h.t.h.SchemaExport                     : HHH000230: Schema export complete
+2017-05-14 16:18:10.092  INFO 12299 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-05-14 16:18:10.752 DEBUG 12299 --- [main] o.h.SQL                                  : insert into library (address, date_of_establishment, description, name) values (?, ?, ?, ?)
+2017-05-14 16:18:10.758 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [VARCHAR] - [libaddress]
+2017-05-14 16:18:10.759 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.760 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [VARCHAR] - [BestLib - best library ever]
+2017-05-14 16:18:10.761 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [VARCHAR] - [BestLib]
+2017-05-14 16:18:10.792 DEBUG 12299 --- [main] o.h.SQL                                  : insert into copies (copy_status) values (?)
+2017-05-14 16:18:10.794 DEBUG 12299 --- [main] o.h.SQL                                  : insert into copies (copy_status) values (?)
+2017-05-14 16:18:10.796 DEBUG 12299 --- [main] o.h.SQL                                  : insert into copies (copy_status) values (?)
+2017-05-14 16:18:10.797 DEBUG 12299 --- [main] o.h.SQL                                  : insert into copies (copy_status) values (?)
+2017-05-14 16:18:10.798 DEBUG 12299 --- [main] o.h.SQL                                  : insert into copies (copy_status) values (?)
+2017-05-14 16:18:10.827 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books (author, details, isbn, publisher, subtitle, title, year) values (?, ?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.828 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [VARCHAR] - [author1]
+2017-05-14 16:18:10.828 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [VARCHAR] - [details1]
+2017-05-14 16:18:10.829 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [VARCHAR] - [isbnstr1]
+2017-05-14 16:18:10.829 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [VARCHAR] - [publisher1]
+2017-05-14 16:18:10.829 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [5] as [VARCHAR] - [subtitle1]
+2017-05-14 16:18:10.829 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [VARCHAR] - [title1]
+2017-05-14 16:18:10.830 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [7] as [INTEGER] - [2010]
+2017-05-14 16:18:10.854 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books_copies (book_book_id, copies_copy_id) values (?, ?)
+2017-05-14 16:18:10.855 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.856 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [1]
+2017-05-14 16:18:10.857 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books_copies (book_book_id, copies_copy_id) values (?, ?)
+2017-05-14 16:18:10.859 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.859 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [2]
+2017-05-14 16:18:10.860 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books_copies (book_book_id, copies_copy_id) values (?, ?)
+2017-05-14 16:18:10.860 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.861 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [3]
+2017-05-14 16:18:10.863 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books_copies (book_book_id, copies_copy_id) values (?, ?)
+2017-05-14 16:18:10.863 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.865 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [4]
+2017-05-14 16:18:10.866 DEBUG 12299 --- [main] o.h.SQL                                  : insert into books_copies (book_book_id, copies_copy_id) values (?, ?)
+2017-05-14 16:18:10.866 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.867 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [5]
+2017-05-14 16:18:10.887 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users (address, email, fee_amount, full_name, paid_amount, password, phone_num, status, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.888 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [VARCHAR] - [null]
+2017-05-14 16:18:10.888 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [VARCHAR] - [user1@mail.com]
+2017-05-14 16:18:10.889 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [INTEGER] - [0]
+2017-05-14 16:18:10.889 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [VARCHAR] - [User 1]
+2017-05-14 16:18:10.889 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [5] as [INTEGER] - [0]
+2017-05-14 16:18:10.889 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [VARCHAR] - [user1]
+2017-05-14 16:18:10.889 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [7] as [VARCHAR] - [null]
+2017-05-14 16:18:10.890 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [9] as [VARCHAR] - [user1]
+2017-05-14 16:18:10.922 DEBUG 12299 --- [main] o.h.SQL                                  : select book0_.book_id as book_id1_1_0_, book0_.author as author2_1_0_, book0_.details as details3_1_0_, book0_.isbn as isbn4_1_0_, book0_.publisher as publishe5_1_0_, book0_.subtitle as subtitle6_1_0_, book0_.title as title7_1_0_, book0_.year as year8_1_0_ from books book0_ where book0_.book_id=?
+2017-05-14 16:18:10.923 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.945 DEBUG 12299 --- [main] o.h.SQL                                  : select copies0_.book_book_id as book_boo1_2_0_, copies0_.copies_copy_id as copies_c2_2_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_ from books_copies copies0_ inner join copies copy1_ on copies0_.copies_copy_id=copy1_.copy_id where copies0_.book_book_id=?
+2017-05-14 16:18:10.946 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:10.959 DEBUG 12299 --- [main] o.h.SQL                                  : insert into borrows (borrow_date, close_date, copy_id, expiry_date, status, user_id) values (?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.959 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.960 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [null]
+2017-05-14 16:18:10.960 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [1]
+2017-05-14 16:18:10.962 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.962 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [BIGINT] - [1]
+2017-05-14 16:18:10.966 DEBUG 12299 --- [main] o.h.SQL                                  : insert into borrows (borrow_date, close_date, copy_id, expiry_date, status, user_id) values (?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.967 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.967 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [null]
+2017-05-14 16:18:10.968 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [4]
+2017-05-14 16:18:10.968 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.968 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [BIGINT] - [1]
+2017-05-14 16:18:10.970 DEBUG 12299 --- [main] o.h.SQL                                  : insert into borrows (borrow_date, close_date, copy_id, expiry_date, status, user_id) values (?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.971 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.971 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [null]
+2017-05-14 16:18:10.971 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [5]
+2017-05-14 16:18:10.972 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.972 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [BIGINT] - [1]
+2017-05-14 16:18:10.974 DEBUG 12299 --- [main] o.h.SQL                                  : insert into borrows (borrow_date, close_date, copy_id, expiry_date, status, user_id) values (?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.974 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.975 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [null]
+2017-05-14 16:18:10.975 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [2]
+2017-05-14 16:18:10.975 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.975 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [BIGINT] - [1]
+2017-05-14 16:18:10.977 DEBUG 12299 --- [main] o.h.SQL                                  : insert into borrows (borrow_date, close_date, copy_id, expiry_date, status, user_id) values (?, ?, ?, ?, ?, ?)
+2017-05-14 16:18:10.977 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.978 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [null]
+2017-05-14 16:18:10.978 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [3]
+2017-05-14 16:18:10.978 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [4] as [TIMESTAMP] - [Sun May 14 16:18:10 CEST 2017]
+2017-05-14 16:18:10.979 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [6] as [BIGINT] - [1]
+2017-05-14 16:18:10.996 DEBUG 12299 --- [main] o.h.SQL                                  : select user0_.user_id as user_id1_7_0_, user0_.address as address2_7_0_, user0_.email as email3_7_0_, user0_.fee_amount as fee_amou4_7_0_, user0_.full_name as full_nam5_7_0_, user0_.paid_amount as paid_amo6_7_0_, user0_.password as password7_7_0_, user0_.phone_num as phone_nu8_7_0_, user0_.status as status9_7_0_, user0_.username as usernam10_7_0_ from users user0_ where user0_.user_id=?
+2017-05-14 16:18:10.997 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.000 DEBUG 12299 --- [main] o.h.SQL                                  : select appointmen0_.user_user_id as user_use1_8_0_, appointmen0_.appointments_appointment_id as appointm2_8_0_, appointmen1_.appointment_id as appointm1_0_1_, appointmen1_.book_id as book_id3_0_1_, appointmen1_.creation_date as creation2_0_1_, appointmen1_.user_id as user_id4_0_1_, book2_.book_id as book_id1_1_2_, book2_.author as author2_1_2_, book2_.details as details3_1_2_, book2_.isbn as isbn4_1_2_, book2_.publisher as publishe5_1_2_, book2_.subtitle as subtitle6_1_2_, book2_.title as title7_1_2_, book2_.year as year8_1_2_, user3_.user_id as user_id1_7_3_, user3_.address as address2_7_3_, user3_.email as email3_7_3_, user3_.fee_amount as fee_amou4_7_3_, user3_.full_name as full_nam5_7_3_, user3_.paid_amount as paid_amo6_7_3_, user3_.password as password7_7_3_, user3_.phone_num as phone_nu8_7_3_, user3_.status as status9_7_3_, user3_.username as usernam10_7_3_ from users_appointments appointmen0_ inner join appointments appointmen1_ on appointmen0_.appointments_appointment_id=appointmen1_.appointment_id left outer join books book2_ on appointmen1_.book_id=book2_.book_id left outer join users user3_ on appointmen1_.user_id=user3_.user_id where appointmen0_.user_user_id=?
+2017-05-14 16:18:11.001 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.003 DEBUG 12299 --- [main] o.h.SQL                                  : select borrows0_.user_user_id as user_use1_9_0_, borrows0_.borrows_borrow_id as borrows_2_9_0_, borrow1_.borrow_id as borrow_i1_3_1_, borrow1_.borrow_date as borrow_d2_3_1_, borrow1_.close_date as close_da3_3_1_, borrow1_.copy_id as copy_id6_3_1_, borrow1_.expiry_date as expiry_d4_3_1_, borrow1_.status as status5_3_1_, borrow1_.user_id as user_id7_3_1_, copy2_.copy_id as copy_id1_4_2_, copy2_.copy_status as copy_sta2_4_2_, user3_.user_id as user_id1_7_3_, user3_.address as address2_7_3_, user3_.email as email3_7_3_, user3_.fee_amount as fee_amou4_7_3_, user3_.full_name as full_nam5_7_3_, user3_.paid_amount as paid_amo6_7_3_, user3_.password as password7_7_3_, user3_.phone_num as phone_nu8_7_3_, user3_.status as status9_7_3_, user3_.username as usernam10_7_3_ from users_borrows borrows0_ inner join borrows borrow1_ on borrows0_.borrows_borrow_id=borrow1_.borrow_id left outer join copies copy2_ on borrow1_.copy_id=copy2_.copy_id left outer join users user3_ on borrow1_.user_id=user3_.user_id where borrows0_.user_user_id=?
+2017-05-14 16:18:11.004 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.006 DEBUG 12299 --- [main] o.h.SQL                                  : select borrow0_.borrow_id as borrow_i1_3_0_, borrow0_.borrow_date as borrow_d2_3_0_, borrow0_.close_date as close_da3_3_0_, borrow0_.copy_id as copy_id6_3_0_, borrow0_.expiry_date as expiry_d4_3_0_, borrow0_.status as status5_3_0_, borrow0_.user_id as user_id7_3_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_, user2_.user_id as user_id1_7_2_, user2_.address as address2_7_2_, user2_.email as email3_7_2_, user2_.fee_amount as fee_amou4_7_2_, user2_.full_name as full_nam5_7_2_, user2_.paid_amount as paid_amo6_7_2_, user2_.password as password7_7_2_, user2_.phone_num as phone_nu8_7_2_, user2_.status as status9_7_2_, user2_.username as usernam10_7_2_ from borrows borrow0_ left outer join copies copy1_ on borrow0_.copy_id=copy1_.copy_id left outer join users user2_ on borrow0_.user_id=user2_.user_id where borrow0_.borrow_id=?
+2017-05-14 16:18:11.007 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.012 DEBUG 12299 --- [main] o.h.SQL                                  : select borrow0_.borrow_id as borrow_i1_3_0_, borrow0_.borrow_date as borrow_d2_3_0_, borrow0_.close_date as close_da3_3_0_, borrow0_.copy_id as copy_id6_3_0_, borrow0_.expiry_date as expiry_d4_3_0_, borrow0_.status as status5_3_0_, borrow0_.user_id as user_id7_3_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_, user2_.user_id as user_id1_7_2_, user2_.address as address2_7_2_, user2_.email as email3_7_2_, user2_.fee_amount as fee_amou4_7_2_, user2_.full_name as full_nam5_7_2_, user2_.paid_amount as paid_amo6_7_2_, user2_.password as password7_7_2_, user2_.phone_num as phone_nu8_7_2_, user2_.status as status9_7_2_, user2_.username as usernam10_7_2_ from borrows borrow0_ left outer join copies copy1_ on borrow0_.copy_id=copy1_.copy_id left outer join users user2_ on borrow0_.user_id=user2_.user_id where borrow0_.borrow_id=?
+2017-05-14 16:18:11.013 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [2]
+2017-05-14 16:18:11.016 DEBUG 12299 --- [main] o.h.SQL                                  : select borrow0_.borrow_id as borrow_i1_3_0_, borrow0_.borrow_date as borrow_d2_3_0_, borrow0_.close_date as close_da3_3_0_, borrow0_.copy_id as copy_id6_3_0_, borrow0_.expiry_date as expiry_d4_3_0_, borrow0_.status as status5_3_0_, borrow0_.user_id as user_id7_3_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_, user2_.user_id as user_id1_7_2_, user2_.address as address2_7_2_, user2_.email as email3_7_2_, user2_.fee_amount as fee_amou4_7_2_, user2_.full_name as full_nam5_7_2_, user2_.paid_amount as paid_amo6_7_2_, user2_.password as password7_7_2_, user2_.phone_num as phone_nu8_7_2_, user2_.status as status9_7_2_, user2_.username as usernam10_7_2_ from borrows borrow0_ left outer join copies copy1_ on borrow0_.copy_id=copy1_.copy_id left outer join users user2_ on borrow0_.user_id=user2_.user_id where borrow0_.borrow_id=?
+2017-05-14 16:18:11.016 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [3]
+2017-05-14 16:18:11.023 DEBUG 12299 --- [main] o.h.SQL                                  : select borrow0_.borrow_id as borrow_i1_3_0_, borrow0_.borrow_date as borrow_d2_3_0_, borrow0_.close_date as close_da3_3_0_, borrow0_.copy_id as copy_id6_3_0_, borrow0_.expiry_date as expiry_d4_3_0_, borrow0_.status as status5_3_0_, borrow0_.user_id as user_id7_3_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_, user2_.user_id as user_id1_7_2_, user2_.address as address2_7_2_, user2_.email as email3_7_2_, user2_.fee_amount as fee_amou4_7_2_, user2_.full_name as full_nam5_7_2_, user2_.paid_amount as paid_amo6_7_2_, user2_.password as password7_7_2_, user2_.phone_num as phone_nu8_7_2_, user2_.status as status9_7_2_, user2_.username as usernam10_7_2_ from borrows borrow0_ left outer join copies copy1_ on borrow0_.copy_id=copy1_.copy_id left outer join users user2_ on borrow0_.user_id=user2_.user_id where borrow0_.borrow_id=?
+2017-05-14 16:18:11.024 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [4]
+2017-05-14 16:18:11.028 DEBUG 12299 --- [main] o.h.SQL                                  : select borrow0_.borrow_id as borrow_i1_3_0_, borrow0_.borrow_date as borrow_d2_3_0_, borrow0_.close_date as close_da3_3_0_, borrow0_.copy_id as copy_id6_3_0_, borrow0_.expiry_date as expiry_d4_3_0_, borrow0_.status as status5_3_0_, borrow0_.user_id as user_id7_3_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_, user2_.user_id as user_id1_7_2_, user2_.address as address2_7_2_, user2_.email as email3_7_2_, user2_.fee_amount as fee_amou4_7_2_, user2_.full_name as full_nam5_7_2_, user2_.paid_amount as paid_amo6_7_2_, user2_.password as password7_7_2_, user2_.phone_num as phone_nu8_7_2_, user2_.status as status9_7_2_, user2_.username as usernam10_7_2_ from borrows borrow0_ left outer join copies copy1_ on borrow0_.copy_id=copy1_.copy_id left outer join users user2_ on borrow0_.user_id=user2_.user_id where borrow0_.borrow_id=?
+2017-05-14 16:18:11.029 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [5]
+2017-05-14 16:18:11.037 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users_borrows (user_user_id, borrows_borrow_id) values (?, ?)
+2017-05-14 16:18:11.037 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.038 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [1]
+2017-05-14 16:18:11.039 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users_borrows (user_user_id, borrows_borrow_id) values (?, ?)
+2017-05-14 16:18:11.039 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.040 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [3]
+2017-05-14 16:18:11.040 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users_borrows (user_user_id, borrows_borrow_id) values (?, ?)
+2017-05-14 16:18:11.041 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.041 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [5]
+2017-05-14 16:18:11.042 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users_borrows (user_user_id, borrows_borrow_id) values (?, ?)
+2017-05-14 16:18:11.042 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.043 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [2]
+2017-05-14 16:18:11.043 DEBUG 12299 --- [main] o.h.SQL                                  : insert into users_borrows (user_user_id, borrows_borrow_id) values (?, ?)
+2017-05-14 16:18:11.044 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.044 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [BIGINT] - [4]
+2017-05-14 16:18:11.060 DEBUG 12299 --- [main] o.h.SQL                                  : insert into appointments (book_id, creation_date, user_id) values (?, ?, ?)
+2017-05-14 16:18:11.060 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.064 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [2] as [TIMESTAMP] - [Sun May 14 16:18:11 CEST 2017]
+2017-05-14 16:18:11.064 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [3] as [BIGINT] - [1]
+2017-05-14 16:18:11.101  INFO 12299 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-05-14 16:18:11.321 DEBUG 12299 --- [main] o.h.SQL                                  : select book0_.book_id as book_id1_1_, book0_.author as author2_1_, book0_.details as details3_1_, book0_.isbn as isbn4_1_, book0_.publisher as publishe5_1_, book0_.subtitle as subtitle6_1_, book0_.title as title7_1_, book0_.year as year8_1_ from books book0_
+2017-05-14 16:18:11.355  INFO 12299 --- [main] h.e.p.l.s.MainService                    : title1
+2017-05-14 16:18:11.356 DEBUG 12299 --- [main] o.h.SQL                                  : select copies0_.book_book_id as book_boo1_2_0_, copies0_.copies_copy_id as copies_c2_2_0_, copy1_.copy_id as copy_id1_4_1_, copy1_.copy_status as copy_sta2_4_1_ from books_copies copies0_ inner join copies copy1_ on copies0_.copies_copy_id=copy1_.copy_id where copies0_.book_book_id=?
+2017-05-14 16:18:11.357 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.363  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 4 AVAILABLE
+2017-05-14 16:18:11.363  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2 AVAILABLE
+2017-05-14 16:18:11.363  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 1 AVAILABLE
+2017-05-14 16:18:11.364  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 3 AVAILABLE
+2017-05-14 16:18:11.364  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 5 AVAILABLE
+2017-05-14 16:18:11.440 DEBUG 12299 --- [main] o.h.SQL                                  : select user0_.user_id as user_id1_7_, user0_.address as address2_7_, user0_.email as email3_7_, user0_.fee_amount as fee_amou4_7_, user0_.full_name as full_nam5_7_, user0_.paid_amount as paid_amo6_7_, user0_.password as password7_7_, user0_.phone_num as phone_nu8_7_, user0_.status as status9_7_, user0_.username as usernam10_7_ from users user0_ where user0_.username=?
+2017-05-14 16:18:11.441 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [VARCHAR] - [user1]
+2017-05-14 16:18:11.451  INFO 12299 --- [main] h.e.p.l.s.MainService                    : User 1
+2017-05-14 16:18:11.452 DEBUG 12299 --- [main] o.h.SQL                                  : select borrows0_.user_user_id as user_use1_9_0_, borrows0_.borrows_borrow_id as borrows_2_9_0_, borrow1_.borrow_id as borrow_i1_3_1_, borrow1_.borrow_date as borrow_d2_3_1_, borrow1_.close_date as close_da3_3_1_, borrow1_.copy_id as copy_id6_3_1_, borrow1_.expiry_date as expiry_d4_3_1_, borrow1_.status as status5_3_1_, borrow1_.user_id as user_id7_3_1_, copy2_.copy_id as copy_id1_4_2_, copy2_.copy_status as copy_sta2_4_2_, user3_.user_id as user_id1_7_3_, user3_.address as address2_7_3_, user3_.email as email3_7_3_, user3_.fee_amount as fee_amou4_7_3_, user3_.full_name as full_nam5_7_3_, user3_.paid_amount as paid_amo6_7_3_, user3_.password as password7_7_3_, user3_.phone_num as phone_nu8_7_3_, user3_.status as status9_7_3_, user3_.username as usernam10_7_3_ from users_borrows borrows0_ inner join borrows borrow1_ on borrows0_.borrows_borrow_id=borrow1_.borrow_id left outer join copies copy2_ on borrow1_.copy_id=copy2_.copy_id left outer join users user3_ on borrow1_.user_id=user3_.user_id where borrows0_.user_user_id=?
+2017-05-14 16:18:11.453 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.458  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 5
+2017-05-14 16:18:11.459  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2017-05-14 16:18:10.957 3
+2017-05-14 16:18:11.459  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2017-05-14 16:18:10.957 5
+2017-05-14 16:18:11.460  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2017-05-14 16:18:10.957 4
+2017-05-14 16:18:11.460  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2017-05-14 16:18:10.957 1
+2017-05-14 16:18:11.460  INFO 12299 --- [main] h.e.p.l.s.MainService                    : 2017-05-14 16:18:10.957 2
+2017-05-14 16:18:11.467 DEBUG 12299 --- [main] o.h.SQL                                  : select appointmen0_.appointment_id as appointm1_0_, appointmen0_.book_id as book_id3_0_, appointmen0_.creation_date as creation2_0_, appointmen0_.user_id as user_id4_0_ from appointments appointmen0_
+2017-05-14 16:18:11.468 DEBUG 12299 --- [main] o.h.SQL                                  : select book0_.book_id as book_id1_1_0_, book0_.author as author2_1_0_, book0_.details as details3_1_0_, book0_.isbn as isbn4_1_0_, book0_.publisher as publishe5_1_0_, book0_.subtitle as subtitle6_1_0_, book0_.title as title7_1_0_, book0_.year as year8_1_0_ from books book0_ where book0_.book_id=?
+2017-05-14 16:18:11.469 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.470 DEBUG 12299 --- [main] o.h.SQL                                  : select user0_.user_id as user_id1_7_0_, user0_.address as address2_7_0_, user0_.email as email3_7_0_, user0_.fee_amount as fee_amou4_7_0_, user0_.full_name as full_nam5_7_0_, user0_.paid_amount as paid_amo6_7_0_, user0_.password as password7_7_0_, user0_.phone_num as phone_nu8_7_0_, user0_.status as status9_7_0_, user0_.username as usernam10_7_0_ from users user0_ where user0_.user_id=?
+2017-05-14 16:18:11.470 TRACE 12299 --- [main] o.h.t.d.s.BasicBinder                    : binding parameter [1] as [BIGINT] - [1]
+2017-05-14 16:18:11.473  INFO 12299 --- [main] h.e.p.l.s.MainService                    : User 1 title1
+2017-05-14 16:18:11.473  INFO 12299 --- [main] h.e.p.l.s.MainService                    : Application started
+2017-05-14 16:18:11.910  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5b08c400: startup date [Sun May 14 16:18:02 CEST 2017]; root of context hierarchy
+2017-05-14 16:18:12.043  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String hu.elteik.projecttools.libmgmt.controller.DefaultContextController.redirectRoot()
+2017-05-14 16:18:12.045  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/book_list]}" onto public java.lang.String hu.elteik.projecttools.libmgmt.controller.DefaultContextController.book_list(java.util.Map<java.lang.String, java.lang.Object>)
+2017-05-14 16:18:12.045  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index]}" onto public java.lang.String hu.elteik.projecttools.libmgmt.controller.DefaultContextController.index(java.util.Map<java.lang.String, java.lang.Object>)
+2017-05-14 16:18:12.048  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/registration]}" onto public java.lang.String hu.elteik.projecttools.libmgmt.controller.UserController.registration()
+2017-05-14 16:18:12.048  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String hu.elteik.projecttools.libmgmt.controller.UserController.login()
+2017-05-14 16:18:12.054  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-05-14 16:18:12.058  INFO 12299 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-05-14 16:18:12.118  INFO 12299 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-14 16:18:12.118  INFO 12299 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-14 16:18:12.186  INFO 12299 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-14 16:18:13.156  INFO 12299 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-05-14 16:18:13.315  INFO 12299 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-05-14 16:18:13.322  INFO 12299 --- [main] h.e.p.l.App                              : Started App in 12.524 seconds (JVM running for 20.848)
+2017-05-14 16:18:15.801  INFO 12299 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-05-14 16:18:15.802  INFO 12299 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization started
+2017-05-14 16:18:15.823  INFO 12299 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2017-05-14 16:24:34.049  INFO 12299 --- [Thread-3] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5b08c400: startup date [Sun May 14 16:18:02 CEST 2017]; root of context hierarchy
+2017-05-14 16:24:34.052  INFO 12299 --- [Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
