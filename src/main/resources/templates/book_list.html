@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>BESTLIB – Könyveink</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css" th:href="@{/css/bootstrap-theme.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <!--<script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>-->
+    <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
+    <script type="text/javascript" src="../static/js/UIHandlers.js" th:src="@{/js/UIHandlers.js}"></script>
+
+    <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden"> <a href="#page-top"></a> </li>
+                    <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
+                    <li> <a href="index.html" th:href="@{/index}">Főoldal</a> </li>
+                    <li> <a href="book_list.html" th:href="@{/book_list}">Könyveink</a> </li>
+                    <!-- Belepes utan lathato menupontok OLVASOKNAK -->
+                    <li> <a>|</a> </li>
+                    <li> <a href="#team">Adataim</a> </li>
+                    <li> <a href="#testimonials">Kölcsönzéseim</a> </li>
+                    <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
+                    <!--<li> <a>|</a> </li>
+                    <li> <a href="#team">Kölcsönzések</a> </li>
+                    <li> <a href="#testimonials">Olvasók</a> </li>-->
+                    <!-- Bejelentkezes elott lathato menupontok -->
+                    <li> <a>|</a> </li>
+                    <li> <a href="registration.html" th:href="@{/registration}">Regisztráció</a> </li>
+                    <li> <a href="login.html" th:href="@{/login}">Login</a> </li>
+                    <!-- Bejelentkezes utan lathato menupont -->
+                    <!--<li> <a href="#works">Logout</a> </li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content">
+        <div class="container">
+            <div class="starter-template">
+                <h1>Könyveink <button class="btn btn-primary" onclick="javascript:UIModals.showAddBookForm()">Új könyv</button></h1>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Találatok szűrése:</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="form-group vertical-margin">
+                            <label for="filter_title_part">Cím, alcím: </label>
+                            <input type="text" class="form-control" id="filter_title_part" placeholder="Címek része vagy egésze" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_author">Szerző:</label>
+                            <input type="email" class="form-control" id="filter_author" placeholder="Név része vagy egésze" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_publisher">Kiadó:</label>
+                            <input type="email" class="form-control" id="filter_publisher" placeholder="Név része vagy egésze" />
+                        </div>
+                        <div class="form-group vertical-margin">
+                            <label for="filter_year">Kiadás éve:</label>
+                            <input type="email" class="form-control" id="filter_year" placeholder="Pontos évszám" />
+                        </div>
+                    </form>
+                    <button class="btn btn-warning vertical-margin" onclick="javascript:UIHandlers.filterBookList()">Szűrés</button>
+                    <button class="btn btn-default vertical-margin" onclick="javascript:UIHandlers.disableFilterBookList()">Összes megjelenítése</button>
+                    <span class="label label-default" style="display: block; text-align: left;">Találatok száma: <span id="resultCount" th:text="${#lists.size(bookList)}">0</span></span>
+                </div>
+            </div>
+
+            <table id="bookListTable" class="table table-hover table-bordered table-striped vertical-center">
+                <tr>
+                    <th class="col-xs-3 text-center">Cím</th>
+                    <th class="col-xs-3 text-center">Szerző</th>
+                    <th class="col-xs-1 text-center">Kiadó</th>
+                    <th class="col-xs-1 text-center">Kiadás éve</th>
+                    <th class="col-xs-2 text-center">ISBN</th>
+                    <th class="col-xs-1 text-center">Részletek</th>
+                    <th class="col-xs-1 text-center">Tevékenységek</th>
+                </tr>
+                <tr th:each="book : ${bookList}" id="book_1_row" th:id="'book_' + (${book.bookId}) + '_row'">
+                    <td><span class="bookTitle" th:text="${book.title}">cím</span>
+                        <br/>
+                        <small>
+                            <em class="bookSubtitle" th:text="${book.subtitle}">alcím</em>
+                        </small>
+                    </td>
+                    <td class="bookAuthor" th:text="${book.author}">szerző</td>
+                    <td class="bookPublisher" th:text="${book.publisher}">kiadó</td>
+                    <td class="bookYear text-center" th:text="${book.year}">év</td>
+                    <td class="bookIsbn text-center" th:text="${book.isbn}">isbn</td>
+                    <td class="bookDetails text-center" th:text="${book.details}">oldalszám</td>
+                    <td class="text-center">
+                        <button class="btn btn-info btn-xs" onclick="javascript:UIModals.showCopies(1)" th:onclick="'javascript:UIModals.showCopies(' + ${book.bookId} + ')'">Példányok</button>
+                        <button class="btn btn-primary btn-xs">Előjegyzés</button>
+                        <button class="btn btn-primary btn-xs">Új példány</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:each="book : ${bookList}" id="book_1_copies_modal" th:id="'book_' + (${book.bookId}) + '_copies_modal'" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+                        <h4 class="modal-title">Példányok listája</h4>
+                        <br/>
+                        <table class="table table-hover table-bordered table-condensed table-striped vertical-center">
+                            <tr>
+                                <td><span th:text="${book.title}">cím</span>
+                                    <br/>
+                                    <small>
+                                        <em th:text="${book.subtitle}">alcím</em>
+                                    </small>
+                                </td>
+                                <td th:text="${book.author}">szerző</td>
+                                <td th:text="${book.isbn}">isbn</td>
+                            </tr>
+                        </table>
+                        <table class="table table-hover table-bordered table-condensed table-striped vertical-center">
+                            <tr>
+                                <th class="col-xs-6">Példány azonosítója</th>
+                                <th class="col-xs-6">Státusz</th>
+                            </tr>
+                            <tr th:each="copy : ${book.copies}" th:class="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)? 'success' : 'danger'}">
+                                <td th:text="${copy.copyId}">copyId</td>
+                                <td th:text="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)? 'Elérhető' : 'Kölcsönzött'}">copyStatus</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer form-group">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Bezárás</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="addBook_modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+                        <h4 class="modal-title">Új könyv felvétele</h4>
+                        <br/>
+                        <form id="addBook_modalForm" role="form" action="#" th:action="@{/book_list}" th:object="${book}" method="post">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="addBook_title">Cím</label>
+                                    <input type="text" id="addBook_title" name="addBook_title" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_subtitle">Alcím</label>
+                                    <input type="text" id="addBook_subtitle" name="addBook_subtitle" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_author">Szerző</label>
+                                    <input type="text" id="addBook_author" name="addBook_author" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_publisher">Kiadó</label>
+                                    <input type="text" id="addBook_publisher" name="addBook_publisher" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_year">Kiadás éve</label>
+                                    <input type="text" id="addBook_year" name="addBook_year" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_isbn">ISBN</label>
+                                    <input type="text" id="addBook_isbn" name="addBook_isbn" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_details">Részletek</label>
+                                    <input type="text" id="addBook_details" name="addBook_details" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addBook_copyCount">Példányok száma</label>
+                                    <input type="number" id="addBook_copyCount" name="addBook_copyCount" class="form-control" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Mégse</button>
+                                <button type="submit" class="btn btn-primary">Mentés</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -25,26 +25,24 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 3. Vendégként, olvasóként, könyvtárosként szeretnék tudni könyvekre keresni egy vagy több könyvadat megadásával.
 4. Vendégként szeretnék tudni beiratkozni (regisztrálni) a könyvtárba.
 5. Olvasóként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (username) kivételével.
-6. Olvasóként szeretnék tudni kiiratkozni a könyvtárból, ha nincs érvényben lévő kölcsönzésem vagy kiegyenlítetlen tartozásom.
-7. Olvasóként szeretnék tudni előjegyezni könyvre.
-8. Olvasóként szeretném tudni visszavonni az előjegyzésemet.
-9. Olvasóként szeretnék tudni meghosszabbítani olyan kölcsönzést, amelynek a határideje hamarosan lejár, és nincs a kölcsönzött könyvre olyan előjegyzés, amely azért nem teljesül, mert a könyv összes példánya ki van kölcsönözve.
-10. Olvasóként szeretném tudni megtekinteni az eddigi összes kölcsönzéseim adatait.
-11. Olvasóként szeretném tudni megtekinteni az egyenlegem információit.
+6. Olvasóként szeretnék tudni előjegyezni könyvre.
+7. Olvasóként szeretném tudni visszavonni az előjegyzésemet.
+8. Olvasóként szeretnék tudni meghosszabbítani olyan kölcsönzést, amelynek a határideje hamarosan lejár, és nincs a kölcsönzött könyvre olyan előjegyzés, amely azért nem teljesül, mert a könyv összes példánya ki van kölcsönözve.
+9. Olvasóként szeretném tudni megtekinteni az eddigi összes kölcsönzéseim adatait.
+10. Olvasóként szeretném tudni megtekinteni az egyenlegem információit.
 	- Tartalmazza a következőket: eddigi befizetéseim összege, eddigi késedelmi díjaim összege, és a két összeg különbsége.
-12. Olvasóként szeretnék az alkalmazás főoldalán összesítést kapni a jelenleg érvényben lévő kölcsönzéseimről.
-13. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha valamelyik kölcsönzésem határideje hamarosan lejár vagy már lejárt.
-14. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha valamelyik előjegyzésem kölcsönözhetővé vált.
-15. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha tartozásom van.
-16. Könyvtárosként szeretném tudni a kölcsönözhetővé vált előjegyzéseket kikölcsönzöttre állítani, amikor a könyv példánya fizikailag kiadásra kerül a könyvtárból.
+11. Olvasóként szeretnék az alkalmazás főoldalán összesítést kapni a jelenleg érvényben lévő kölcsönzéseimről.
+12. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha valamelyik kölcsönzésem határideje hamarosan lejár vagy már lejárt.
+13. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha valamelyik előjegyzésem kölcsönözhetővé vált.
+14. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha tartozásom van. Tartozás kölcsönzési határidő átlépése esetén kerül kivetésre.
+15. Könyvtárosként szeretném tudni a kölcsönözhetővé vált előjegyzéseket kikölcsönzöttre állítani, amikor a könyv példánya fizikailag kiadásra kerül a könyvtárból.
 	- A kikölcsönzésre kerülő példányt ki lehessen választani a könyv szabad példányainak listájából. 
-17. Könyvtárosként szeretném tudni regisztrálni az olvasók pénzbefizetéseit.
-18. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani, ha a könyv példánya fizikailag visszavételre került a könyvtárban.
-19. Könyvtárosként szeretnék tudni könyvet állományba venni az adatok (beleértve a példányszámot is) megadásával.
+16. Könyvtárosként szeretném tudni regisztrálni az olvasók pénzbefizetéseit.
+17. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani, ha a könyv példánya fizikailag visszavételre került a könyvtárban.
+18. Könyvtárosként szeretnék tudni könyvet állományba venni az adatok (beleértve a példányszámot is) megadásával.
 	- Ha ilyen könyvből már van az állományban, mindössze újabb példányok állományba vétele történik, akkor ki tudjam választani az adott könyvet, és csak a példányszámot kelljen megadnom.
-20. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról az előjegyzésekről, amik kölcsönözhetővé váltak.
-21. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról a kölcsönzésekről és a kölcsönzők adatairól, amelyek túllépték a kölcsönzési határidőt.
-22. Könyvtárosként szeretném tudni az olvasókat kiiratkozott / (újra beiratkozás esetén) beiratkozott státuszúra állítani. Kiiratkoztatni csak akkor, ha nincs érvényben lévő kölcsönzése vagy tartozása.
+19. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról az előjegyzésekről, amik kölcsönözhetővé váltak.
+20. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról a kölcsönzésekről és a kölcsönzők adatairól, amelyek túllépték a kölcsönzési határidőt.
 
 ##### 1.2.2. Nem funkcionális elvárások
 
@@ -56,11 +54,8 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 1.3. Szakterületi fogalomjegyzék
 
 - **Olvasó (Reader):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), folyamatok kezdeményezésére (pl. előjegyzés).
-	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, státusszal, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
+	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
 	
-	- Státusza lehet aktív (beiratkozott) / inaktív (kiiratkozott).
-	- Ha inaktív státuszban van, be tud jelentkezni a felületre, de a vendégek által elérhető funkciókon kívül csak saját adatainak módosítására és újrabeiratkozásra képes.
-	- Csak akkor kaphat kiiratkozott státuszt, ha nincs érvényben lévő kölcsönzése, és nincs tartozása.
 - **Könyvtáros (Librarian):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
 	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
 - **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárost foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
@@ -96,11 +91,13 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 **Bejelentkezett olvasó**
 
-**Bejelentkezett inaktív olvasó**
-
 **Bejelentkezett könyvtáros**
 
 ##### 2.1.2. Végpontok
+- **GET/index:** Főoldal
+- **GET/book_list:** Könyveink
+- **GET/login:** Bejelentkezés
+- **GET/registration:** Regisztráció
 
 #### 2.2. Felhasználóifelület vázlatok
 
@@ -117,9 +114,8 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 | telefon   |           | publisher  |         | deadline   |                |
 | address   |           | year       |         | closed_at  |                |
 | password  |           | isbn       |         | renewals   |                |
-| status    |           | other_info |         |            |                |
-| paid_amount||||||
-| fee_amount||||||
+| paid_amount|          | details    |         |            |                |
+| fee_amount ||||||
 
 ##### 2.3.2. Adatbázisterv
 
@@ -132,8 +128,20 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 3.2. Könyvtárstruktúra
 
 #### 3.3. Szerveroldali fejlesztés
+##### Dokumentáció generálás
+A *projeszk/javadoc* mappába minden commitnál generáljunk Java dokumentációt!
 
 #### 3.4. Kliensoldali fejlesztés
+
+#### 3.5. Kódtár használata
+1. Mindenki külön branchek vagy forkolás használatával dolgozik.
+2. Ha valaki elkészült egy programrésszel, készít egy pull requestet véleményezés céljából.
+3. A fölösleges fájlokat ne commitoljuk! Ilyenek például az IDE által hagyott bináris fájlok és a *target* mappa tartalma. Commit előtt mindig nyomjunk egy ``` mvn clean ``` parancsot a  *projeszk* mappában!
+4. Lokális kódtárban a változások stagelése, commitolása és pusholása (a *projeszk* mappából):
+	- ``` mvn clean ```
+	- ``` git add . ```
+	- ``` git commit -am "Változtatás leírása" ```
+	- ``` git push ```
 
 ### 4. Tesztelés
 
@@ -148,6 +156,38 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 5.1. Ajánlott hardver-, szerverkonfiguráció
 
 #### 5.2. Telepítés
+##### 1. PostgreSQL telepítése (Ubuntu)
+``` sudo apt-get install postgresql postgresql-contrib ```
+
+Csatlakozzunk *postgres* felhasználóként a szerverhez:
+
+``` sudo -u postgres psql postgres ```
+
+Állítsuk be *postgres* felhasználóhoz a *Rep1l2t34* jelszót:
+
+``` \password Rep1l2t34 ```
+
+Hozzunk létre üres adatbázist a következő névvel: *library*
+
+```  sudo -u postgres createdb library ```
+
+##### 2. Maven telepítése (Ubuntu)
+``` sudo apt install maven ```
+
+##### 3/a Master branch klónozása
+``` git clone https://github.com/tengex/projeszk.git ```
+
+##### 3/b Tetszőleges branch klónozása
+``` git clone -b BRANCH_NEVE --single-branch https://github.com/tengex/projeszk.git ```
+
+##### 4. Futtatás
+
+A ```projeszk``` mappából parancssorral:
+
+``` mvn spring-boot:run ```
+
+URL: ```http://localhost:8080/```
+
 
 #### 5.3. A program használata
 
