@@ -67,7 +67,13 @@
                     <h3 class="panel-title">Találatok szűrése:</h3>
                 </div>
                 <div class="panel-body">
-                    checkbox: már bejezett kölcsönzések eltüntetése
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                    <input type="checkbox" id="hideClosedBorrowsCheckbox" name="hideClosedBorrowsCheckbox" onclick="javascript:UIHandlers.toggleFilterBorrowList()" />
+														</span>
+                        <input type="text" th:attr="readonly=true" class="form-control" value="Befejezett kölcsönzések elrejtése" />
+                    </div>
+                    <br/>
                     <span class="label label-default" style="display: block; text-align: left;">Találatok száma: <span id="resultCount" th:text="${#lists.size(borrowList)}">0</span></span>
                 </div>
             </div>
@@ -91,27 +97,27 @@
                         </small>
                     </td>
                     <td class="bookAuthor" th:text="${borrow.author}">szerző</td>
-                    <td class="bookPublisher" th:text="${borrow.isbn}">isbn</td>
-                    <td class="bookYear text-center">
-                        <small th:text="${#dates.format(borrow.borrowDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
+                    <td class="bookIsbn" th:text="${borrow.isbn}">isbn</td>
+                    <td class="text-center">
+                        <small class="borrowDate" th:text="${#dates.format(borrow.borrowDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
                         <br/>
                         <small>
-                            <em th:text="${#dates.format(borrow.borrowDate, 'HH:mm')}">99:99</em>
+                            <em class="borrowTime" th:text="${#dates.format(borrow.borrowDate, 'HH:mm')}">99:99</em>
                         </small>
                     </td>
                     <!--<td class="bookYear text-center" th:text="${#dates.format(borrow.closeDate, 'yyyy. MM. dd.')}">2017.05.29.-->
-                    <td class="bookYear text-center">
-                        <small th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'yyyy.MM.dd.') : 'Aktív'}">2017.05.15.</small>
+                    <td class="text-center">
+                        <small class="borrowCloseDate" th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'yyyy.MM.dd.') : 'Aktív'}">2017.05.15.</small>
                         <br/>
                         <small>
-                            <em th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'HH:mm') : ''}">99:99</em>
+                            <em class="borrowCloseTime" th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'HH:mm') : ''}">99:99</em>
                         </small>
                     </td>
-                    <td class="bookYear text-center">
-                        <small th:text="${#dates.format(borrow.expiryDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
+                    <td class="text-center">
+                        <small class="borrowExpiryDate" th:text="${#dates.format(borrow.expiryDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
                         <br/>
                         <small>
-                            <em th:text="${#dates.format(borrow.expiryDate, 'HH:mm')}">99:99</em>
+                            <em class="borrowExpiryTime" th:text="${#dates.format(borrow.expiryDate, 'HH:mm')}">99:99</em>
                         </small>
                     </td>
                 </tr>
@@ -119,6 +125,9 @@
         </div>
 
     </div>
+    <script>
+        $('#hideClosedBorrowsCheckbox').prop('checked', false);
+        </script>
 </body>
 
 </html>

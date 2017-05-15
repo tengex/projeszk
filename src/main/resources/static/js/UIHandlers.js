@@ -60,5 +60,29 @@ var UIHandlers = (function () {
 
             $('#resultCount').html(resultCount);
         },
+
+        toggleFilterBorrowList: function () {
+            var resultCount = 0;
+
+            if ($('#hideClosedBorrowsCheckbox')[0].checked) {
+                $("[id^=borrow_][id$=_row]").each(function (i) {
+                    if ($(this).find('.borrowCloseTime').html()) {
+                        $(this).css('display', 'none');
+                    } else {
+                        
+                        $(this).css('display', 'table-row');
+                        resultCount++;
+                    }
+                });
+
+            } else {
+                $("[id^=borrow_][id$=_row]").each(function (i) {
+                    $(this).css('display', 'table-row');
+                    resultCount++;
+                });
+            }
+
+            $('#resultCount').html(resultCount);
+        },
     };
 })();
