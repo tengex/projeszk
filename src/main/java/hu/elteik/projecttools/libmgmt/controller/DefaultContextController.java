@@ -3,6 +3,7 @@ package hu.elteik.projecttools.libmgmt.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers.DateDeserializer;
 import com.sun.java_cup.internal.runtime.virtual_parse_stack;
 
 import java.util.*;
@@ -38,7 +39,14 @@ public class DefaultContextController {
                 return "result";
         }*/
 
-        private static List<Book> createTestBookList() {
+        @RequestMapping("/borrow_list")
+        public String borrow_list(Map<String, Object> model) {
+                List<BorrowListData> borrowList = createTestBorrowList();
+                model.put("borrowList", borrowList);
+                return "borrow_list";
+        }
+
+        private List<Book> createTestBookList() {
                 List<Book> bookList = new ArrayList<>();
 
                 Copy copy1 = new Copy();
@@ -219,5 +227,146 @@ public class DefaultContextController {
                 bookList.add(book17);
 
                 return bookList;
+        }
+
+        private List<BorrowListData> createTestBorrowList() {
+                List<BorrowListData> borrowList = new ArrayList<>();
+
+                borrowList.add(new BorrowListData(1L, 2L, "Kathryn Croft", "A lány akinek nincs múltja", "",
+                                "9786155676475", new Date(new GregorianCalendar(2017, 4, 17).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 7, 20).getTimeInMillis())));
+                borrowList.add(new BorrowListData(2L, 3L, "Vlagyimir Szutyejev", "Vidám mesék", "", "9789634154686",
+                                new Date(new GregorianCalendar(2017, 4, 19).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 10).getTimeInMillis())));
+                borrowList.add(new BorrowListData(3L, 11L, "Clare Cassandra", "Csontváros", "", "9789632450957",
+                                new Date(new GregorianCalendar(2017, 4, 20).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 4).getTimeInMillis())));
+                borrowList.add(new BorrowListData(4L, 5L, "Danielle Steel", "Az apartman", "", "9789632033136",
+                                new Date(new GregorianCalendar(2017, 4, 13).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 30).getTimeInMillis())));
+                borrowList.add(new BorrowListData(5L, 3L, "Vlagyimir Szutyejev", "Vidám mesék", "", "9789634154686",
+                                new Date(new GregorianCalendar(2017, 4, 27).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 10).getTimeInMillis())));
+                borrowList.add(new BorrowListData(6L, 7L, "Yrsa Sigurdardóttir", "Gének", "A skandináv krimi",
+                                "9789633245040", new Date(new GregorianCalendar(2017, 5, 1).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 14).getTimeInMillis())));
+                borrowList.add(new BorrowListData(7L, 4L, "W. Bruce Cameron", "Egy kutya négy élete", "",
+                                "9789633999721", new Date(new GregorianCalendar(2017, 4, 24).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 5, 30).getTimeInMillis())));
+                borrowList.add(new BorrowListData(8L, 9L, "Peiker Éva", "Útra kelni", "Magyar írók a felnőtté válásról",
+                                "9789632936420", new Date(new GregorianCalendar(2017, 4, 26).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 20).getTimeInMillis())));
+                borrowList.add(new BorrowListData(9L, 16L, "Kalapos Éva", "D.A.C. 6", "Éretté nyilvánítva",
+                                "978963403350", new Date(new GregorianCalendar(2017, 5, 4).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 5, 10).getTimeInMillis())));
+                borrowList.add(new BorrowListData(10L, 8L, "Jodi Ellen Malpas", "Egy éjszaka leplezetlenül", "",
+                                "9786155617126", new Date(new GregorianCalendar(2017, 5, 8).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 13).getTimeInMillis())));
+                borrowList.add(new BorrowListData(11L, 16L, "Kalapos Éva", "D.A.C. 6", "Éretté nyilvánítva",
+                                "978963403350", new Date(new GregorianCalendar(2017, 5, 10).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 18).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 5, 13).getTimeInMillis())));
+                borrowList.add(new BorrowListData(12L, 15L, "Jamie McGuire", "Gyönyörű pillanat", "", "9789632618524",
+                                new Date(new GregorianCalendar(2017, 5, 8).getTimeInMillis()),
+                                new Date(new GregorianCalendar(2017, 6, 10).getTimeInMillis())));
+
+                return borrowList;
+        }
+
+        /*class BorrowListData {
+                private Borrow borrow;
+                private Book book;
+                private Copy copy;
+        
+                public BorrowListData(Borrow borrow, Book book, Copy copy) {
+                        this.borrow = borrow;
+                        this.book = book;
+                        this.copy = copy;
+                }
+        
+                public Borrow getBorrow() {
+                        return borrow;
+                }
+        
+                public Book getBook() {
+                        return book;
+                }
+        
+                public Copy getCopy() {
+                        return copy;
+                }
+        }*/
+
+        class BorrowListData {
+                private Long borrowId;
+                private Long bookId;
+                private String author;
+                private String title;
+                private String subtitle;
+                private String isbn;
+                private Date borrowDate;
+                private Date expiryDate;
+                private Date closeDate;
+
+                public BorrowListData(Long borrowId, Long bookId, String author, String title, String subtitle,
+                                String isbn, Date borrowDate, Date expiryDate) {
+                        this.borrowId = borrowId;
+                        this.bookId = bookId;
+                        this.author = author;
+                        this.title = title;
+                        this.subtitle = subtitle;
+                        this.isbn = isbn;
+                        this.borrowDate = borrowDate;
+                        this.expiryDate = expiryDate;
+                }
+
+                public BorrowListData(Long borrowId, Long bookId, String author, String title, String subtitle,
+                                String isbn, Date borrowDate, Date expiryDate, Date closeDate) {
+                        this.borrowId = borrowId;
+                        this.bookId = bookId;
+                        this.author = author;
+                        this.title = title;
+                        this.subtitle = subtitle;
+                        this.isbn = isbn;
+                        this.borrowDate = borrowDate;
+                        this.expiryDate = expiryDate;
+                        this.closeDate = closeDate;
+                }
+
+                public Long getBorrowId() {
+                        return borrowId;
+                }
+
+                public Long getBookId() {
+                        return bookId;
+                }
+
+                public String getAuthor() {
+                        return author;
+                }
+
+                public String getTitle() {
+                        return title;
+                }
+
+                public String getSubtitle() {
+                        return subtitle;
+                }
+
+                public String getIsbn() {
+                        return isbn;
+                }
+
+                public Date getBorrowDate() {
+                        return borrowDate;
+                }
+
+                public Date getExpiryDate() {
+                        return expiryDate;
+                }
+
+                public Date getCloseDate() {
+                        return closeDate;
+                }
         }
 }

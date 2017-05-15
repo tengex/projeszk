@@ -105,17 +105,17 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 ##### 2.3.1. Adatmodell
 
-| Readers   | *Library* | Books      | Copies  | Borrows    | Appointments   |
-| --------- | -------   | ---------- | ------- | ---------- | -------------- |
-|`reader_id`|`library_id`|`book_id`  |`copy_id`|`borrow_id` |`appointment_id`|
-| username  | name      | author     |`book_id`|`reader_id` |`reader_id`     |
-| fullname  | address   | title      | status  |`copy_id`   |`book_id`       |
-| email     | year      | subtitle   |         | created_at | created_at     |
-| telefon   |           | publisher  |         | deadline   |                |
-| address   |           | year       |         | closed_at  |                |
-| password  |           | isbn       |         | renewals   |                |
-| paid_amount|          | details    |         |            |                |
-| fee_amount ||||||
+| User      | *Library*           | Book      | Copy    | Borrow     | Appointment    |
+| --------- | ------------------- | ----------| ------- | ---------- | -------------- |
+|`userId`   |`libraryId`          |`bookId`   |`copyId` |`borrowId`  |`appointmentId` |
+| username  | name                | author    |`book`   |`user`      |`user`          |
+| fullName  | address             | title     | status  |`copy`      |`book`          |
+| email     | dateOfEstablishment | subtitle  |         | borrowDate | creationDate   |
+| phoneNum  | description         | publisher |         | expiryDate |                |
+| address   |                     | year      |         | closeDate  |                |
+| password  |                     | isbn      |         |            |                |
+| paidAmount|                     | details   |         |            |                |
+| feeAmount |                     |||||
 
 ##### 2.3.2. Adatbázisterv
 
