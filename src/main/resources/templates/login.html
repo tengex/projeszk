@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>BESTLIB – Login</title>
+  <title>BESTLIB – Belépés</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
   <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css" th:href="@{/css/bootstrap-theme.css}" />
+  <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>
 
   <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
 </head>
@@ -43,7 +46,7 @@
           <!-- Bejelentkezes elott lathato menupontok -->
           <li> <a>|</a> </li>
           <li> <a href="registration.html" th:href="@{/registration}">Regisztráció</a> </li>
-          <li> <a href="login.html" th:href="@{/login}">Login</a> </li>
+          <li> <a href="login.html" th:href="@{/login}">Belépés</a> </li>
           <!-- Bejelentkezes utan lathato menupont -->
           <!--<li> <a href="#works">Logout</a> </li>-->
         </ul>
@@ -55,28 +58,29 @@
       <div class="row">
         <div class="col-md-6">
 
-          <form class="form-horizontal" action="" method="POST">
+          <form class="form-horizontal" role="form" action="" method="POST" th:attr="data-toggle='validator'">
             <fieldset>
               <div id="legend">
-                <legend class="">Login</legend>
+                <legend class="form-group ">Belépés</legend>
               </div>
-              <div class="control-group">
+              <div class="form-group control-group">
                 <label class="control-label" for="username">Felhasználónév</label>
                 <div class="controls">
-                  <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" />
+                  <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" th:attr="data-required-error='Kérjük adja meg felhasználónevét!', required='true'" />
+                  <div class="help-block with-errors"></div>
                 </div>
               </div>
-              <div class="control-group">
+              <div class="form-group control-group">
                 <label class="control-label" for="password">Jelszó</label>
                 <div class="controls">
-                  <input type="password" id="password" name="password" placeholder="" class="form-control input-lg" />
-
+                  <input type="password" id="password" name="password" placeholder="" class="form-control input-lg" th:attr="data-required-error='Kérjük adja meg jelszavát!', required='true'" />
+                  <div class="help-block with-errors"></div>
                 </div>
               </div>
 
               <br/>
 
-              <div class="control-group">
+              <div class="form-group control-group">
                 <!-- Button -->
                 <div class="controls">
                   <button class="btn btn-success">Bejelentkezés</button>

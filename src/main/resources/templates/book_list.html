@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
     <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-    <!--<script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>-->
+    <script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>
     <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
     <script type="text/javascript" src="../static/js/UIHandlers.js" th:src="@{/js/UIHandlers.js}"></script>
 
@@ -48,7 +48,7 @@
                     <!-- Bejelentkezes elott lathato menupontok -->
                     <li> <a>|</a> </li>
                     <li> <a href="registration.html" th:href="@{/registration}">Regisztráció</a> </li>
-                    <li> <a href="login.html" th:href="@{/login}">Login</a> </li>
+                    <li> <a href="login.html" th:href="@{/login}">Belépés</a> </li>
                     <!-- Bejelentkezes utan lathato menupont -->
                     <!--<li> <a href="#works">Logout</a> </li>-->
                 </ul>
@@ -170,11 +170,11 @@
 					</button>
                         <h4 class="modal-title">Új könyv felvétele</h4>
                         <br/>
-                        <form id="addBook_modalForm" role="form" action="#" th:action="@{/book_list}" th:object="${book}" method="post">
+                        <form id="addBook_modalForm" role="form" th:attr="data-toggle='validator'" action="#" th:action="@{/book_list}" th:object="${book}" method="post">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="addBook_title">Cím</label>
-                                    <input type="text" id="addBook_title" name="addBook_title" class="form-control" />
+                                    <input type="text" id="addBook_title" name="addBook_title" class="form-control" th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
@@ -184,22 +184,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="addBook_author">Szerző</label>
-                                    <input type="text" id="addBook_author" name="addBook_author" class="form-control" />
+                                    <input type="text" id="addBook_author" name="addBook_author" class="form-control" th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="addBook_publisher">Kiadó</label>
-                                    <input type="text" id="addBook_publisher" name="addBook_publisher" class="form-control" />
+                                    <input type="text" id="addBook_publisher" name="addBook_publisher" class="form-control" th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="addBook_year">Kiadás éve</label>
-                                    <input type="text" id="addBook_year" name="addBook_year" class="form-control" />
+                                    <input type="text" id="addBook_year" name="addBook_year" class="form-control" th:attr="data-required-error='A mező kitöltése kötelező!', required=true, pattern='^\d{4}$', data-pattern-error='Nem megfelelő formátum!'" />
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="addBook_isbn">ISBN</label>
-                                    <input type="text" id="addBook_isbn" name="addBook_isbn" class="form-control" />
+                                    <input type="text" id="addBook_isbn" name="addBook_isbn" class="form-control" th:attr="data-required-error='A mező kitöltése kötelező!', required=true, pattern='^\d{3,}$', data-pattern-error='Nem megfelelő formátum!'"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="addBook_copyCount">Példányok száma</label>
-                                    <input type="number" id="addBook_copyCount" name="addBook_copyCount" class="form-control" />
+                                    <input type="number" id="addBook_copyCount" name="addBook_copyCount" class="form-control" th:attr="min=1, value=1, data-required-error='A mező kitöltése kötelező!', required=true, data-min-error='Kérem válasszon egy 0-nál nagyobb értéket!'"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
