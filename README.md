@@ -52,7 +52,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 - **Olvasó (User):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), valamint érvényes kölcsönzés meghosszabítására.
 	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
 	
-- **Könyvtáros (Librarian):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
+- **Könyvtáros (Admin):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
 	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
 - **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárost foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
 	> Az adatbázisban nincs szükség adatainak rögzítésére.
@@ -74,17 +74,17 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 ### 2. Adatmodell
 
-| User      | Book      | Copy    | Borrow     |
-| --------- | ----------| ------- | ---------- |
-|`userId`   |`bookId`   |`copyId` |`borrowId`  |
-| username  | author    |`book`   |`user`      |
-| fullName  | title     | copyStatus  |`copy`      |
-| email     | subtitle  |         | borrowDate |
-| phoneNum  | publisher |         | expiryDate |
-| address   | year      |         | closeDate  |
-| password  | isbn      |         |            |
-| paidAmount| details   |         |            |
-| feeAmount | ||
+| User      | Book      | Copy       | Borrow     |
+| --------- | ----------| -------    | ---------- |
+|`userId`   |`bookId`   |`copyId`    |`borrowId`  |
+| username  | author    |`book`      |`user`      |
+| fullName  | title     | copyStatus |`copy`      |
+| email     | subtitle  |            | borrowDate |
+| phoneNum  | publisher |            | expiryDate |
+| address   | year      |            | closeDate  |
+| password  | isbn      |            |            |
+| paidAmount| details   |            |            |
+| feeAmount |           |            |            |
 
 ### 3. Kódtár használata
 1. Mindenki külön branchek vagy forkolás használatával dolgozik.
@@ -137,6 +137,6 @@ URL: ```http://localhost:8080/```
 ### 6. Felhasznált projekt eszközök
 - git
 - maven
-- javadoc
+- javadoc: ``` mvn javadoc:javadoc ```
 - trello
 - **tesztelő eszköz**

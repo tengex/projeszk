@@ -17,14 +17,14 @@ var UIModals = (function () {
 
         showAddBookForm: function () {
             if (!UIModals.modalShown) {
-                //$('#addBook_modalForm').validator(customValidations);
-                //$('#addBook_modalForm').validator('update');
-                $('#addBook_modalForm')[0].reset();
+                //$('#addBookForm').validator(customValidations);
+                //$('#addBookForm').validator('update');
+                $('#addBookForm')[0].reset();
 
-                $('#addBook_modal').on('show.bs.modal', function () {
+                $('#addBookModal').on('show.bs.modal', function () {
                     UIModals.modalShown = true;
                 });
-                $('#addBook_modal').on('hidden.bs.modal', function () {
+                $('#addBookModal').on('hidden.bs.modal', function () {
                     UIModals.modalShown = false;
                 });
 
@@ -32,7 +32,7 @@ var UIModals = (function () {
                     $(this).find('[autofocus]').focus();
                 });*/
 
-                $('#addBook_modal').modal('show');
+                $('#addBookModal').modal('show');
                 //UIExecutions.alreadySubmitted = false;
             }
         },

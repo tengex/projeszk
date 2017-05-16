@@ -29,7 +29,10 @@ public class DefaultContextController {
         @RequestMapping("/book_list")
         public String book_list(Map<String, Object> model) {
                 List<Book> bookList = createTestBookList();
+                User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin");
+                //User user = new User("valaki", "Valaki", "Valaki@bestlib.hu", "06702222222", "Budapest", "valami");
                 model.put("bookList", bookList);
+                model.put("user", user);
                 return "book_list";
         }
 
