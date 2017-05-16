@@ -50,7 +50,7 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 #### 1.3. Szakterületi fogalomjegyzék
 
 - **Olvasó (User):** olyan személy, aki regisztrált az alkalmazás felületén, és képes a könyvkölcsönzéshez szükséges információk megtekintésére (pl. könyvtár állománya, könyvek adatai), valamint érvényes kölcsönzés meghosszabítására.
-	> Az adatbázisban Reader ID-vel, felhasználói névvel (username), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
+	> Az adatbázisban felhasználói névvel (username - elsődleges kulcs), teljes névvel, email címmel, telefonszámmal, lakcímmel, jelszóval, eddig befizetett összeggel és eddig összegyűjtött késedelmi díjjal rendelkező objektum.
 	
 - **Könyvtáros (Admin):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
 	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
@@ -76,15 +76,14 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 
 | User      | Book      | Copy       | Borrow     |
 | --------- | ----------| -------    | ---------- |
-|`userId`   |`bookId`   |`copyId`    |`borrowId`  |
-| username  | author    |`book`      |`user`      |
-| fullName  | title     | copyStatus |`copy`      |
-| email     | subtitle  |            | borrowDate |
-| phoneNum  | publisher |            | expiryDate |
-| address   | year      |            | closeDate  |
-| password  | isbn      |            |            |
-| paidAmount| details   |            |            |
-| feeAmount |           |            |            |
+|`username` |`bookId`   |`copyId`    |`borrowId`  |
+| fullName  | author    |`book`      |`user`      |
+| email     | title     | copyStatus |`copy`      |
+| phoneNum  | subtitle  |            | borrowDate |
+| address   | publisher |            | expiryDate |
+| password  | year      |            | closeDate  |
+| paidAmount| isbn      |            |            |
+| feeAmount | details   |            |            |
 
 ### 3. Kódtár használata
 1. Mindenki külön branchek vagy forkolás használatával dolgozik.
