@@ -81,15 +81,17 @@
             <table id="borrowListTable" class="table table-hover table-bordered table-striped vertical-center">
                 <tr>
                     <th class="text-center">ID</th>
+                    <th class="text-center">Olvasó</th>
                     <th class="col-xs-3 text-center">Cím</th>
-                    <th class="col-xs-3">Szerző</th>
+                    <th class="col-xs-2">Szerző</th>
                     <th class="col-xs-2 text-center">ISBN</th>
-                    <th class="col-xs-1 text-center">Mikortól</th>
-                    <th class="col-xs-1 text-center">Meddig</th>
+                    <th class="col-xs-1 text-center">Időpont</th>
+                    <th class="col-xs-1 text-center">Lezárva</th>
                     <th class="col-xs-1 text-center">Határidő</th>
                 </tr>
                 <tr th:each="borrow : ${borrowList}" id="borrow_1_row" th:id="'borrow_' + ${borrow.borrowId} + '_row'">
                     <td class="borrowId text-center" th:text="${borrow.borrowId}">23</td>
+                    <td class="username" th:text="${borrow.username}">username</td>
                     <td><span class="bookTitle" th:text="${borrow.title}">cím</span>
                         <br/>
                         <small>
@@ -106,12 +108,21 @@
                         </small>
                     </td>
                     <!--<td class="bookYear text-center" th:text="${#dates.format(borrow.closeDate, 'yyyy. MM. dd.')}">2017.05.29.-->
+                    <!--<button class="btn btn-danger btn-xs" th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).BORROWED)}"> Visszavétel</button>-->
                     <td class="text-center">
-                        <small class="borrowCloseDate" th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'yyyy.MM.dd.') : 'Aktív'}">2017.05.15.</small>
+                        <span th:if="${borrow.closeDate != null}">
+                        <small class="borrowCloseDate" th:text="${#dates.format(borrow.closeDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
                         <br/>
                         <small>
-                            <em class="borrowCloseTime" th:text="${(borrow.closeDate != null)? #dates.format(borrow.closeDate, 'HH:mm') : ''}">99:99</em>
+                            <em class="borrowCloseTime" th:text="${#dates.format(borrow.closeDate, 'HH:mm')}">99:99</em>
                         </small>
+                        </span>
+                        <span class="borrowCloseButton" th:if="${borrow.closeDate == null and user.username == 'admin'}">
+                            <button class="btn btn-danger btn-xs" >Lezárás</button>
+                        </span>
+                        <span class="borrowCloseDate" th:if="${borrow.closeDate == null and user.username != 'admin'}">
+                            <u>Aktív kölcsönzés</u>
+                        </span>
                     </td>
                     <td class="text-center">
                         <small class="borrowExpiryDate" th:text="${#dates.format(borrow.expiryDate, 'yyyy.MM.dd.')}">2017.05.15.</small>
@@ -127,7 +138,7 @@
     </div>
     <script>
         $('#hideClosedBorrowsCheckbox').prop('checked', false);
-        </script>
+    </script>
 </body>
 
 </html>

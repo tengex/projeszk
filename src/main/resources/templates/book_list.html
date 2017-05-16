@@ -159,7 +159,6 @@
                                 <td th:text="${copy.copyId}">copyId</td>
                                 <td th:text="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)? 'Elérhető' : 'Kölcsönzött'}">copyStatus</td>
                                 <td th:if="${user.username} == 'admin'" class="text-center">
-                                    <button class="btn btn-success btn-xs" th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">Kölcsönzés</button>
                                     <select th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">
                                         <option value="felh1">felhasznalo1</option>
                                         <option value="felh2">felhasznalo2</option>
@@ -167,7 +166,8 @@
                                         <option value="felh4">felhasznalo4</option>
                                         <option value="felh5">felhasznalo5</option>
                                     </select>
-                                    <button class="btn btn-danger btn-xs" th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).BORROWED)}"> Visszavétel</button>
+                                    <button class="btn btn-success btn-xs" th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">Kölcsönzés</button>
+                                    <button class="btn btn-danger btn-xs" th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).BORROWED)}">Kölcsönzés lezárása</button>
                                 </td>
                             </tr>
                         </table>
