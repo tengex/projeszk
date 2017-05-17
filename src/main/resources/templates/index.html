@@ -12,7 +12,8 @@
     <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
-
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    
     <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
 </head>
 
@@ -59,8 +60,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <h1>BESTLIB</h1>
-                        <p class="intro-text">Valami gomb</p>
+                        <h1 class="main-shadow">BESTLIB</h1>
+                        <p class="intro-text main-shadow">Könyvnyilvántartó alkalmazás</p>
                         <a href="#content" class="btn btn-default learn-more-btn page-scroll">Tudj meg többet</a> </div>
                 </div>
             </div>
@@ -69,29 +70,39 @@
     <div id="content">
         <div class="container">
             <div class="section-title text-center center">
-                <h2>A projektről valami mutyi</h2>
+                <h2>Röviden a projektről</h2>
                 <hr />
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="img/bg.jpg" class="img-responsive" alt="valami másik kép" />
-                </div>
-                <div class="col-md-4">
+                    <!--<img src="img/bg.jpg" class="img-responsive" alt="valami másik kép" />-->
                     <div class="about-text">
-                        <h4>Ide is</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum. </p>
+                        <h4>Célkitűzés</h4>
+                        <div style="margin-right: 10px;">
+                        <p>A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítése, amely lehetőséget nyújt könyvek és olvasók adatainak tárolására, valamint megkönnyíti a kölcsönzések kezelését.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="about-text">
-                        <h4>Ide meg még inkább</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam.</p>
+                        <h4>Könyvek nyilvántartása</h4>
                         <ul>
-                            <li>Lorem ipsum dolor sit amet</li>
-                            <li>Consectetur adipiscing commodo</li>
-                            <li>Duis sed dapibus leo sed dapibus</li>
-                            <li>Sed commodo nibh ante bibendum</li>
+                            <li>Könyvek adatainak és példányainak tárolása</li>
+                            <li>Új könyvek, példányok felvétele</li>
+                            <li>Kölcsönzési információk megtekintése</li>
+                            <li>Könyvkeresés több adat szerint</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="about-text">
+                        <h4>Olvasók nyilvántartása</h4>
+                        <ul>
+                            <li>Regisztráció kölcsönzéshez</li>
+                            <li>Olvasói adatok tárolása</li>
+                            <li>Olvasók kölcsönzéseinek nyomonkövetése</li>
+                            <li>Késedelmi díjak kivetése</li>
+                            <li>Befizetések rögzítése</li>
                         </ul>
                     </div>
                 </div>
@@ -104,9 +115,6 @@
             <p>Copyright &copy; Projekt eszközök csapat</p>
         </div>
     </div>
-    <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/main.js}"></script>
-    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
 </body>
 

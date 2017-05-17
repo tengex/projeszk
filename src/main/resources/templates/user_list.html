@@ -1,14 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<!--
-    <div th:switch="${user.role}"> 
-        <p th:case="'admin'">User is an administrator</p>
-        <p th:case="#{roles.manager}">User is a manager</p>
-        <p th:case="*">User is some other thing</p> 
-    </div>
--->
-
 <head>
     <title>BESTLIB – Olvasóink</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -20,8 +12,6 @@
     <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>
-    <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
-    <script type="text/javascript" src="../static/js/UIHandlers.js" th:src="@{/js/UIHandlers.js}"></script>
 
     <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
 </head>
@@ -79,7 +69,7 @@
                     <th class=" text-center">Egyenleg</th>
                     <th class="col-xs-2 text-center">Tevékenységek</th>
                 </tr>
-                <tr th:each="userData : ${userList}" id="user_username_row" th:id="'user_' + (${userData.username}) + '_row'" th:with="balance=${userData.paidAmount - userData.feeAmount}">
+                <tr th:each="userData : ${userList}" id="user_username_row" th:id="${'user_' + userData.username + '_row'}" th:with="balance=${userData.paidAmount - userData.feeAmount}">
                     <td class="username" th:text="${userData.username}">felhasználó név</td>
                     <td class="fullName" th:text="${userData.fullName}">teljes név</td>
                     <td class="email" th:text="${userData.email}">E-mail@bestlib.hu</td>
@@ -87,12 +77,12 @@
                     <td class="address text-center" th:text="${userData.address}">1929 Budapest, XY utca, 21.</td>
                     <td class="balance text-center" th:text="${balance + ' HUF'}">–300 HUF</td>
                     <td class="text-center">
-                        <form id="username_PayForm" th:id="${userData.username} + '_PayForm'" role="form" th:attr="data-toggle='validator'" action="#">
+                        <form id="payForm_username" th:id="${'payForm_' + userData.username}" role="form" th:attr="data-toggle='validator'" action="#">
                             <div class="input-group form-group">
-                                <input type="number" id="username_PayAmount" name="username_PayAmount" th:id="${userData.username} + '_PayAmount'" th:name="${userData.username} + '_PayAmount'" class="form-control" th:attr="min=1, required=true" />
+                                <input type="number" id="payAmount_username" name="payAmount_username" th:id="${'payAmount_' + userData.username}" th:name="${'payAmount_' + userData.username}" class="form-control" th:attr="min=1, required=true" />
                                 <span class="input-group-addon">HUF</span>
                             </div>
-                            <button class="btn btn-warning btn-sm">Befizetés</button>
+                            <button type="submit" class="btn btn-warning btn-sm">Befizetés</button>
                         </form>
                     </td>
                 </tr>
