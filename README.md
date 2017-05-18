@@ -29,16 +29,12 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 7. Olvasóként szeretném tudni megtekinteni az eddigi összes kölcsönzéseim adatait.
 8. Olvasóként szeretném tudni megtekinteni az egyenlegem információit.
 	- Tartalmazza a következőket: eddigi befizetéseim összege, eddigi késedelmi díjaim összege, és a két összeg különbsége.
-9. Olvasóként szeretnék az alkalmazás főoldalán összesítést kapni a jelenleg érvényben lévő kölcsönzéseimről.
-10. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha valamelyik kölcsönzésem határideje hamarosan lejár vagy már lejárt.
-11. Olvasóként szeretnék az alkalmazás főoldalán értesítést kapni, ha tartozásom van. Tartozás kölcsönzési határidő átlépése esetén kerül kivetésre.
-12. Könyvtárosként szeretnék tudni kölcsönzést regisztrálni, amikor a könyv példánya fizikailag kiadásra kerül a könyvtárból.
+9. Könyvtárosként szeretnék tudni kölcsönzést regisztrálni, amikor a könyv példánya fizikailag kiadásra kerül a könyvtárból.
 	- A kikölcsönzésre kerülő példányt ki lehessen választani a könyv szabad példányainak listájából. 
-13. Könyvtárosként szeretném tudni regisztrálni az olvasók pénzbefizetéseit.
-14. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani, ha a könyv példánya fizikailag visszavételre került a könyvtárban.
-15. Könyvtárosként szeretnék tudni könyvet állományba venni az adatok (beleértve a példányszámot is) megadásával.
+10. Könyvtárosként szeretném tudni regisztrálni az olvasók pénzbefizetéseit.
+11. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani, ha a könyv példánya fizikailag visszavételre került a könyvtárban.
+12. Könyvtárosként szeretnék tudni könyvet állományba venni az adatok (beleértve a példányszámot is) megadásával.
 	- Ha ilyen könyvből már van az állományban, mindössze újabb példányok állományba vétele történik, akkor ki tudjam választani az adott könyvet, és csak a példányszámot kelljen megadnom.
-16. Könyvtárosként szeretnék az alkalmazás főoldalán összesítést kapni azokról a kölcsönzésekről és a kölcsönzők adatairól, amelyek túllépték a kölcsönzési határidőt.
 
 ##### 1.2.2. Nem funkcionális elvárások
 
@@ -73,6 +69,8 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 	- A kölcsönzés létrejöttekor ki lehet választani a kölcsönzendő példányt a könyv szabad példányai közül.
 
 ### 2. Adatmodell
+
+Minta adatok a *projeszk/data_resource/Database_raw_data.xlsx* fájlban találhatók.
 
 | User      | Book      | Copy       | Borrow     |
 | --------- | ----------| -------    | ---------- |
@@ -130,6 +128,13 @@ URL: ```http://localhost:8080/```
 ### 5. Tesztelés
 
 #### 5.1. Minta bejelentkezési adatok
+
+- admin:
+	- Felhasználónév: ``` admin ```
+	- Jelszó: ``` admin ```
+- olvasó:
+	- Felhasználónév: ``` user ```
+	- Jelszó: ``` user ```
 
 #### 5.2. Automatizált tesztelés
 
