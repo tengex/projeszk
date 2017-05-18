@@ -20,5 +20,11 @@ public class UserController {
     public String login(){
         return "login";
     }
+	
+	 @RequestMapping("/profile")
+    public String profile() {
+
+        return "profile";
+    }
 
 }
