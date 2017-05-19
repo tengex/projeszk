@@ -11,36 +11,32 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
     <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-    <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-
-
+    <script type="text/javascript" src="../static/js/validator.min.js" th:src="@{/js/validator.min.js}"></script>
 </head>
 
-
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">
-                <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
-        </div>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
+            </div>
 
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                 <li class="hidden"> <a href="#page-top"></a> </li>
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden"> <a href="#page-top"></a> </li>
                     <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
                     <li> <a href="index.html" th:href="@{/index}">Főoldal</a> </li>
                     <li> <a href="book_list.html" th:href="@{/book_list}">Könyveink</a> </li>
                     <!-- Belepes utan lathato menupontok OLVASOKNAK -->
                     <li> <a>|</a> </li>
-                     <li> <a href="profile.html" th:href="@{/profile}">Adataim</a> </li>
+                    <li> <a href="profile.html" th:href="@{/profile}">Adataim</a> </li>
                     <li> <a href="borrow_list.html" th:href="@{/borrow_list}">Kölcsönzések</a> </li>
                     <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
                     <li> <a href="user_list.html" th:href="@{/user_list}">Olvasóink</a> </li>
@@ -50,245 +46,214 @@
                     <li> <a href="login.html" th:href="@{/login}">Belépés</a> </li>
                     <!-- Bejelentkezes utan lathato menupont -->
                     <!--<li> <a href="#works">Logout</a> </li>-->
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <div id="content">
 
+        <div class="container">
+            <div class="row">
 
-<div id="content">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
-    <div class="container">
-        <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <b>
+                                <i>
+                                    <h2 class="panel-title" th:text="${user.fullName}">Vickey R. Frye</h2>
+                                </i>
+                            </b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2 col-lg-2 ">
+                                </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                                <div class=" col-md-9 col-lg-9 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <u>Személyes adatok:</u>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Teljes név:</td>
+                                                <td th:text="${user.fullName}">Vickey R. Frye</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Felhasználónév:</td>
+                                                <td th:text="${user.username}">sheenjek</td>
+                                            </tr>
 
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <b><i><h2 class="panel-title">Vickey R. Frye</h2></i></b>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row" >
+                                            <tr>
+                                                <td>Email cím:</td>
+                                                <td th:text="${user.email}">VickeyRFrye@teleworm.us</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tel:</td>
+                                                <td th:text="${user.phoneNum}">434-454-3937</td>
+                                            </tr>
 
-                            <div class="col-md-2 col-lg-2 " >
+                                            <tr>
+                                                <td>Lakcím:</td>
+                                                <td th:text="${user.address}">1167 Worley Avenue 25</td>
+                                            </tr>
 
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <u>Statisztikai adatok:</u>
+                                                </td>
+                                            </tr>
 
+                                            <tr>
+                                                <td>Aktuális egyenleg:</td>
+                                                <td th:text="${(user.paidAmount - user.feeAmount) + ' HUF'}">0 HUF</td>
+                                            </tr>
 
-                            </div>
+                                            <tr>
+                                                <td>Összes befizetés:</td>
+                                                <td th:text="${user.paidAmount + ' HUF'}">315 HUF</td>
+                                            </tr>
 
+                                            <tr>
+                                                <td>Összes késedelmi díj:</td>
+                                                <td th:text="${user.feeAmount + ' HUF'}">315 HUF</td>
+                                            </tr>
 
+                                        </tbody>
+                                    </table>
 
-
-                            <div class=" col-md-9 col-lg-9 ">
-                                <table class="table table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <td colspan="2" align="center"><u>Személyes adatok:</u></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Olvasói azonosító(ID):</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teljes név:</td>
-                                        <td>Vickey R. Frye</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Felhasználónév:</td>
-                                        <td>sheenjek </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Email cím:</td>
-                                        <td>VickeyRFrye@teleworm.us</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tel:</td>
-                                        <td>434-454-3937</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Lakcím:</td>
-                                        <td>1167 Worley Avenue 25</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2" align="center"><u>Statisztikai adatok:</u></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Státusz:</td>
-                                        <td>aktív</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Összes befizetésem($):</td>
-                                        <td>315</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Késedelmi díj($)</td>
-                                        <td>0</td>
-                                    </tr>
-
-
-                                    </tbody>
-                                </table>
-
-
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel-footer">
+                        <div class="panel-footer">
 
-
-
-                        <button class="btn btn-success" onclick="EditDelete.showEditModal()">Szerkeztés</button>
-                        <span class="pull-right">
+                            <button class="btn btn-success" onclick="EditDelete.showEditModal()">Szerkesztés</button>
+                            <span class="pull-right">
                           <button class="btn btn-danger" onclick="EditDelete.showDeleteModal()">Törlés</button>
                             </span>
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div id="Profilemodal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
 
-
-    <div id="Profilemodal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"></span>
 
                     </button>
 
-                    <h4 class="modal-title">Adatok szerkeztése</h4>
-                    <br/>
-                    <form id="modalForm" role="form" action="#"  method="post">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Név</label>
-                                <input type="text" id="profile_fullname" name="profile_fullname" class="form-control" />
-                                <div class="help-block with-errors"></div>
+                        <h4 class="modal-title">Adatok szerkesztése</h4>
+                        <br/>
+                        <form id="modalForm" role="form" th:attr="data-toggle='validator'" action="#" method="post">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label" for="profile_fullname">Teljes név:</label>
+                                    <input type="text" id="profile_fullname" name="profile_fullname" class="form-control" value="Vick ey R. Frye" th:value="${user.fullName}" th:attr="data-required-error='Kérjük adja meg felhasználónevét!', required='true'" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="profile_email">Email cím:</label>
+                                    <input type="email" id="profile_email" name="profile_email" class="form-control" value="VickeyRFrye@teleworm.u s" th:value="${user.email}" th:attr="data-error='Érvénytelen E-mail cím!', data-required-error='Kérjük adja meg az E-mail címét!', required='true'" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="profile_tel">Telefonszám:</label>
+                                    <input type="text" id="profile_tel" name="profile_tel" class="form-control" value="434-454-39 37" th:value="${user.phoneNum}" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="profile_address">Lakcím:</label>
+                                    <input type="text" id="profile_address" name="profile_address" class="form-control" value="1167 Worley Ave nue 25" th:value="${user.address}" />
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="modal-footer form-group">
+
+                                    <button class="btn btn-warning" data-dismiss="modal">Mégse</button>
+                                    <button class="btn btn-success" type="submit">Mentés</button>
+
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label>Email cim:</label>
-                                <input type="text" id="profile_email" name="profile_email" class="form-control" />
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <label >Telefonszám</label>
-                                <input type="text" id="profile_tel" name="profile_tel" class="form-control" />
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <label>Lakcím</label>
-                                <input type="text" id="profile_address" name="profile_address" class="form-control" />
-                                <div class="help-block with-errors"></div>
-                            </div>
-
-
-                            <div class="modal-footer form-group">
-
-                                <button  class="btn btn-warning" data-dismiss="modal">Mégse</button>
-
-
-                                <span class="pull-right">
-                          <button  class="btn btn-success" data-dismiss="modal">Mentés</button>
-                            </span>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-
-    <div class="modal fade" id="Deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <i><h3 class="modal-title" >Biztosan törölni szeretné a profilját?</h3></i>
-                    <button  class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal fade" id="Deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i>
+                            <h3 class="modal-title">Biztosan törölni szeretné a profilját?</h3>
+                        </i>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"> Vickey R. Frye</span>
                     </button>
-                </div>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Nem</button>
-                    <button type="button" class="btn btn-success">Igen</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Nem</button>
+                        <button type="button" class="btn btn-success">Igen</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            var EditDelete = (function () {
+                return {
+                    modalShown: false,
+
+                    showEditModal: function () {
+                        if (!EditDelete.modalShown) {
+
+                            $('#modalForm')[0].reset();
+
+                            $('#Profilemodal').on('show.bs.modal', function () {
+                                EditDelete.modalShown = true;
+                            });
+                            $('#Profilemodal').on('hidden.bs.modal', function () {
+                                EditDelete.modalShown = false;
+                            });
+
+
+
+                            $('#Profilemodal').modal('show');
+
+                        }
+                    },
+                    showDeleteModal: function () {
+                        if (!EditDelete.modalShown) {
+
+
+                            $('#Deletemodal').on('show.bs.modal', function () {
+                                EditDelete.modalShown = true;
+                            });
+                            $('#Deletemodal').on('hidden.bs.modal', function () {
+                                EditDelete.modalShown = false;
+                            });
+
+                            $('#Deletemodal').modal('show');
+
+                        }
+                    },
+                };
+            })();
+        </script>
+
     </div>
-
-
-<script>
-
-    var EditDelete = (function () {
-    return {
-     modalShown: false,
-
-     showEditModal: function () {
-                if (!EditDelete.modalShown) {
-
-                    $('#modalForm')[0].reset();
-
-                    $('#Profilemodal').on('show.bs.modal', function () {
-                        EditDelete.modalShown = true;
-                    });
-                    $('#Profilemodal').on('hidden.bs.modal', function () {
-                        EditDelete.modalShown = false;
-                    });
-
-
-
-                    $('#Profilemodal').modal('show');
-
-                }
-            },
-      showDeleteModal: function(){
-                if(!EditDelete.modalShown){
-
-
-                      $('#Deletemodal').on('show.bs.modal', function () {
-                                         EditDelete.modalShown = true;
-                                     });
-                    $('#Deletemodal').on('hidden.bs.modal', function () {
-                                         EditDelete.modalShown = false;
-                                     });
-
-                $('#Deletemodal').modal('show');
-
-                }
-      },
-        };
-})();
-
-
-
-</script>>
-
-
-
-
-</div>
-<!-- Footer -->
-<div id="footer">
-    <div class="container">
-        <p>Copyright &copy; Projekt eszközök csapat</p>
-        <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
-        <script type="text/javascript" th:src="@{/js/main.js}"></script>
-        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-    </div>
-</div>
 
 </body>
 

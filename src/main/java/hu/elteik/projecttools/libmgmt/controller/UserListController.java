@@ -70,7 +70,7 @@ public class UserListController {
                 user11.setPaidAmount(320);
                 user12.setPaidAmount(0);
 
-                user1.setFeeAmount(315);
+                user1.setFeeAmount(400);
                 user2.setFeeAmount(100);
                 user3.setFeeAmount(930);
                 user4.setFeeAmount(100);
