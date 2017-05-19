@@ -25,14 +25,14 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 3. Vendégként, olvasóként, könyvtárosként szeretnék tudni könyvekre keresni egy vagy több könyvadat megadásával.
 4. Vendégként szeretnék tudni beiratkozni (regisztrálni) a könyvtárba.
 5. Olvasóként szeretném tudni módosítani felhasználói adataimat a felhasználói nevem (username) kivételével.
-6. Olvasóként szeretnék tudni meghosszabbítani olyan kölcsönzést, amelynek a határideje hamarosan lejár.
+6. Olvasóként szeretném tudni törölni a profilomat.
 7. Olvasóként szeretném tudni megtekinteni az eddigi összes kölcsönzéseim adatait.
 8. Olvasóként szeretném tudni megtekinteni az egyenlegem információit.
 	- Tartalmazza a következőket: eddigi befizetéseim összege, eddigi késedelmi díjaim összege, és a két összeg különbsége.
-9. Könyvtárosként szeretnék tudni kölcsönzést regisztrálni, amikor a könyv példánya fizikailag kiadásra kerül a könyvtárból.
+9. Könyvtárosként szeretnék tudni kölcsönzést regisztrálni.
 	- A kikölcsönzésre kerülő példányt ki lehessen választani a könyv szabad példányainak listájából. 
 10. Könyvtárosként szeretném tudni regisztrálni az olvasók pénzbefizetéseit.
-11. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani, ha a könyv példánya fizikailag visszavételre került a könyvtárban.
+11. Könyvtárosként szeretném tudni a kölcsönzést lezárt státuszúra állítani.
 12. Könyvtárosként szeretnék tudni könyvet állományba venni az adatok (beleértve a példányszámot is) megadásával.
 	- Ha ilyen könyvből már van az állományban, mindössze újabb példányok állományba vétele történik, akkor ki tudjam választani az adott könyvet, és csak a példányszámot kelljen megadnom.
 
@@ -50,10 +50,6 @@ A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítés
 	
 - **Könyvtáros (Admin):** olyan személy, aki a könyvtár alkalmazottja, képes a könyvtár információinak megtekintésére és a kölcsönzések, késedelmi díjak, állományba vételek kezelésére.
 	- Az egyszerűség érdekében egyetlen könyvtáros van, amely fix belépési adatokkal rendelkezik.
-- **Könyvtár (Library):** olyan intézmény, amely könyveket tárol, könyvtárost foglalkoztat, olvasókat tart nyilván, és a könyveket kiadja kölcsönbe.
-	> Az adatbázisban nincs szükség adatainak rögzítésére.
-	
-	- Az egyszerűség érdekében egyetlen fix könyvtár van, törlésére, adatainak módosítására és új könyvtár létrehozására nincs lehetőség. Ennek megfelelően minden entitás ehhez a könyvtárhoz tartozik.
 - **Könyv (Book):** a könyvtár állományában lévő kikölcsönözhető dokumentum.
 	> Az adatbázisban Book ID-vel, szerzővel, címmel, alcímmel, kiadó nevével, megjelenés évével, egyéb információval, ISBN-nel rendelkező objektum.
 	
