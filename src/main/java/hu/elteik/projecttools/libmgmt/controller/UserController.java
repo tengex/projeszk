@@ -1,32 +1,75 @@
 package hu.elteik.projecttools.libmgmt.controller;
 
+import hu.elteik.projecttools.libmgmt.data.dao.UserDao;
+import hu.elteik.projecttools.libmgmt.data.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.*;
-import hu.elteik.projecttools.libmgmt.data.entity.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by Bázis on 2017. 04. 15..
  */
 @Controller
 public class UserController {
-    //todo user stuff
+    private static final Logger logger = Logger.getLogger(UserController.class.getName());
 
-	@RequestMapping("/registration")
-    public String registration(){
+    @Autowired
+    UserDao userDao;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        User newUser = new User();
+        model.addAttribute("userForm", newUser);
         return "registration";
     }
 
-    @RequestMapping("/login")
-    public String login(){
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User user, Model model) {
+        logger.warning("DBG USR: " + user.getUsername() + ": " + user.getRole());
+        User u = userDao.findByUsername(user.getUsername());
+        if (u == null) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userDao.save(user);
+            return "redirect:index";
+        }
+        logger.severe("User already exists!");
+        return "registration";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+
         return "login";
     }
-	
-	 @RequestMapping("/profile")
+    @RequestMapping(value = "/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth!=null){
+            new SecurityContextLogoutHandler().logout(request,response,auth);
+        }
+        return "redirect:/index?logout";
+    }
+
+    @RequestMapping("/profile")
     public String profile(Map<String, Object> model) {
         //A bejelentkezett user adatait kell majd itt átadni
-        User user = new User("sheenjek", "Vickey R. Frye", "VickeyRFrye@teleworm.us", "434-454-3937", "1167 Worley Avenue 25", "admin");
+        User user = new User("sheenjek", "Vickey R. Frye", "VickeyRFrye@teleworm.us", "434-454-3937", "1167 Worley Avenue 25", "admin", "ROLE_USER");
         user.setPaidAmount(315);
         user.setFeeAmount(400);
         model.put("user", user);

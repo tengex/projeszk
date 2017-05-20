@@ -23,7 +23,7 @@ public class BorrowListController {
         @RequestMapping("/borrow_list")
         public String borrow_list(Map<String, Object> model) {
                 List<BorrowListData> borrowList = createTestBorrowList();
-                User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin");
+                User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin", "ROLE_ADMIN");
                 //User user = new User("valaki", "Valaki", "Valaki@bestlib.hu", "06702222222", "Budapest", "valami");
                 model.put("borrowList", borrowList);
                 model.put("user", user);

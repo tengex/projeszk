@@ -1,8 +1,11 @@
 package hu.elteik.projecttools.libmgmt.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.*;
 
 /**
@@ -16,8 +19,10 @@ public class DefaultContextController {
         }
 
         @RequestMapping("/index")
-        public String index(Map<String, Object> model) {
-                model.put("message", "Hello, World!");
+        public String index(Map<String, Object> model, Principal principal) {
+                //User usr = (User)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+                if(principal!= null)
+                model.put("currentUser", principal.getName());
                 return "index";
         }
 }

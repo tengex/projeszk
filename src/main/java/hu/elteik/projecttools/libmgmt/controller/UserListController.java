@@ -23,7 +23,7 @@ public class UserListController {
         @RequestMapping("/user_list")
         public String user_list(Map<String, Object> model) {
                 List<User> userList = createTestUserList();
-                User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin");
+                User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin", "ROLE_ADMIN");
                 //User user = new User("valaki", "Valaki", "Valaki@bestlib.hu", "06702222222", "Budapest", "valami");
                 model.put("userList", userList);
                 model.put("user", user);
@@ -33,29 +33,29 @@ public class UserListController {
         private List<User> createTestUserList() {
                 List<User> userList = new ArrayList<>();
                 User user1 = new User("sheenjek", "Vickey R. Frye", "VickeyRFrye@teleworm.us", "434-454-3937",
-                                "1167 Worley Avenue 25", "66ZkYm");
+                                "1167 Worley Avenue 25", "66ZkYm", "ROLE_USER");
                 User user2 = new User("malheur", "Micah S. Church", "malheur@Smth.com", "830-249-0849",
-                                "1401 Morris Street 1", "uYq7t3");
+                                "1401 Morris Street 1", "uYq7t3", "ROLE_USER");
                 User user3 = new User("rogue", "Frédérique Abma", "FrederiqueAbma@teleworm.us", "615-525-9635",
-                                "4001 Green Street 5", "2ZbD9a");
+                                "4001 Green Street 5", "2ZbD9a", "ROLE_USER");
                 User user4 = new User("haley", "Iona Verhaag", "IonaVerhaag@armyspy.com", "040-536-400",
-                                "5541 Parmova 17", "Z4gTK8");
+                                "5541 Parmova 17", "Z4gTK8", "ROLE_USER");
                 User user5 = new User("rosie", "Hedvige Daigneault", "HedvigeDaigneault@rhyta.com", "051-363-579",
-                                "2223 Jurovski Dol 5", "V4yeME");
+                                "2223 Jurovski Dol 5", "V4yeME", "ROLE_USER");
                 User user6 = new User("norman", "Jun Fu", "JunFu@dayrep.com", "031-851-725",
-                                "220 Skofja Loka Tavcarjeva 97", "EEpH3j");
+                                "220 Skofja Loka Tavcarjeva 97", "EEpH3j", "ROLE_USER");
                 User user7 = new User("poppy", "Jens Heilmann", "JensHeilmann@teleworm.us", "031-397-528",
-                                "6274 Smarje Tavcarjeva 9", "PdLq9L");
+                                "6274 Smarje Tavcarjeva 9", "PdLq9L", "ROLE_USER");
                 User user8 = new User("eclipse", "Burnell Boncoeur", "BurnellBoncoeur@rhyta.com", "070-393-507",
-                                "3314 Braslovce Trg revolucije 13", "qVzt5Z");
+                                "3314 Braslovce Trg revolucije 13", "qVzt5Z", "ROLE_USER");
                 User user9 = new User("saint", "Callum James", "CallumJames@dayrep.com", "031-085-623", "9224 Turnisce",
-                                "Z73f4J");
+                                "Z73f4J", "ROLE_USER");
                 User user10 = new User("cocoa", "Bernd Herzog", "BerndHerzog@teleworm.us", "051-288-941",
-                                "2331 Pragersko Turjaska 35", "aU7d9G");
+                                "2331 Pragersko Turjaska 35", "aU7d9G", "ROLE_USER");
                 User user11 = new User("qt312", "Ariam Mewael", "AriamMewael@rhyta.com", "051-554-891",
-                                "3264 Sveti Stefan Dunajska 113", "ZQj8E9");
+                                "3264 Sveti Stefan Dunajska 113", "ZQj8E9", "ROLE_USER");
                 User user12 = new User("Aquarius", "Jimmy S. Barrera", "JimmySBarrera@jourrapide.com", "609-641-7808",
-                                "2815 Moonlight Drive", "Bobeil");
+                                "2815 Moonlight Drive", "Bobeil", "ROLE_USER");
 
                 user1.setPaidAmount(315);
                 user2.setPaidAmount(150);

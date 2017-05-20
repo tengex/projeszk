@@ -3,6 +3,7 @@ package hu.elteik.projecttools.libmgmt.service;
 import hu.elteik.projecttools.libmgmt.data.dao.*;
 import hu.elteik.projecttools.libmgmt.data.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,9 +61,12 @@ public class MainService {
         for (Borrow b : u.getBorrows()) //get all borrows of selected user
             logger.info(b.getBorrowDate() + " " + b.getCopy().getCopyId());
 
-        for(Appointment a : appointmentDao.findAll())
+        for (Appointment a : appointmentDao.findAll())
             logger.info(a.getUser().getFullName() + " " + a.getBook().getTitle());
     }
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private void insertTestValues() {
         libraryDao.save(new Library("BestLib", "libaddress", new Date(), "BestLib - best library ever")); //saves library data
@@ -75,7 +79,7 @@ public class MainService {
         copyDao.save(copies); //you need to save existing copies first
         bookDao.save(book); //saves updated book instance, with now existing copies
 
-        User user = new User("user1", "User 1", "user1@mail.com", null, null, "user1"); //user instance
+        User user = new User("user1", "User 1", "user1@mail.com", null, null, bCryptPasswordEncoder.encode("user1"), "ROLE_USER"); //user instance
         userDao.save(user); //need to save an user BEFORE adding borrows - else it throws PersistenceException
         Set<Copy> copies2 = bookDao.findOne(1L).getCopies(); //get copies by ID (Long)
         Set<Borrow> borrows = new HashSet<>();
@@ -84,8 +88,8 @@ public class MainService {
         user.setBorrows(borrows);
         borrowDao.save(borrows); //you need to save existing borrows before user to avoid PersistenceException
         userDao.save(user); //save user instance
-
-        Appointment a = new Appointment(book,user);
+        userDao.save(new User("admin", "Adminisztrátor", "admin@bestlib.eu", null, null, bCryptPasswordEncoder.encode("admin"), "ROLE_ADMIN"));
+        Appointment a = new Appointment(book, user);
         appointmentDao.save(a);
     }
 }

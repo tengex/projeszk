@@ -1,120 +1,129 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <title>BESTLIB – Főoldal</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css" th:href="@{/css/bootstrap-theme.css}" />
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.css"
+          th:href="@{/css/bootstrap-theme.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}"/>
     <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/js/UIModals.js" th:src="@{/js/UIModals.js}"></script>
     <script type="text/javascript" th:src="@{/js/main.js}"></script>
-    
-    <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}" />
+
+    <link rel="shortcut icon" type="image/gif" th:href="@{/img/favicon.ico}"/>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
-            </div>
-
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="hidden"> <a href="#page-top"></a> </li>
-                    <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
-                    <li> <a href="index.html" th:href="@{/index}">Főoldal</a> </li>
-                    <li> <a href="book_list.html" th:href="@{/book_list}">Könyveink</a> </li>
-                    <!-- Belepes utan lathato menupontok OLVASOKNAK -->
-                    <li> <a>|</a> </li>
-                     <li> <a href="profile.html" th:href="@{/profile}">Adataim</a> </li>
-                    <li> <a href="borrow_list.html" th:href="@{/borrow_list}">Kölcsönzések</a> </li>
-                    <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
-                    <li> <a href="user_list.html" th:href="@{/user_list}">Olvasóink</a> </li>
-                    <!-- Bejelentkezes elott lathato menupontok -->
-                    <li> <a>|</a> </li>
-                    <li> <a href="registration.html" th:href="@{/registration}">Regisztráció</a> </li>
-                    <li> <a href="login.html" th:href="@{/login}">Belépés</a> </li>
-                    <!-- Bejelentkezes utan lathato menupont -->
-                    <!--<li> <a href="#works">Logout</a> </li>-->
-                </ul>
-            </div>
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
         </div>
-    </nav>
 
-    <!-- Header -->
-    <div id="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <h1 class="main-shadow">BESTLIB</h1>
-                        <p class="intro-text main-shadow">Könyvnyilvántartó alkalmazás</p>
-                        <a href="#content" class="btn btn-default learn-more-btn page-scroll">Tudj meg többet</a> </div>
-                </div>
-            </div>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="hidden"><a href="#page-top"></a></li>
+                <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
+                <li><a href="index.html" th:href="@{/index}">Főoldal</a></li>
+                <li><a href="book_list.html" th:href="@{/book_list}">Könyveink</a></li>
+                <!-- Belepes utan lathato menupontok OLVASOKNAK -->
+                <li sec:authorize="isAuthenticated()"><a>|</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_LIBRARIAN')"><a href="profile.html"
+                                                                                             th:href="@{/profile}">Adataim</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_USER')"><a href="borrow_list.html" th:href="@{/borrow_list}">Kölcsönzések</a>
+                </li>
+                <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
+                <li sec:authorize="hasRole('ROLE_LIBRARIAN')"><a href="user_list.html"
+                                                                 th:href="@{/user_list}">Olvasóink</a></li>
+                <!-- Bejelentkezes elott lathato menupontok -->
+                <li><a>|</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="registration.html" th:href="@{/registration}">Regisztráció</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()"><a href="login.html" th:href="@{/login}">Belépés</a></li>
+                <!-- Bejelentkezes utan lathato menupont -->
+                <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/logout}">Kijelentkezés <span
+                        th:text="'('+${currentUser}+')'"></span></a></li>
+            </ul>
         </div>
     </div>
-    <div id="content">
+</nav>
+
+<!-- Header -->
+<div id="intro">
+    <div class="intro-body">
         <div class="container">
-            <div class="section-title text-center center">
-                <h2>Röviden a projektről</h2>
-                <hr />
-            </div>
             <div class="row">
-                <div class="col-md-4">
-                    <!--<img src="img/bg.jpg" class="img-responsive" alt="valami másik kép" />-->
-                    <div class="about-text">
-                        <h4>Célkitűzés</h4>
-                        <div style="margin-right: 10px;">
-                        <p>A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítése, amely lehetőséget nyújt könyvek és olvasók adatainak tárolására, valamint megkönnyíti a kölcsönzések kezelését.</p>
-                        </div>
+                <div class="col-md-10 col-md-offset-1">
+                    <h1 class="main-shadow">BESTLIB</h1>
+                    <p class="intro-text main-shadow">Könyvnyilvántartó alkalmazás</p>
+                    <a href="#content" class="btn btn-default learn-more-btn page-scroll">Tudj meg többet</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="section-title text-center center">
+            <h2>Röviden a projektről</h2>
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <!--<img src="img/bg.jpg" class="img-responsive" alt="valami másik kép" />-->
+                <div class="about-text">
+                    <h4>Célkitűzés</h4>
+                    <div style="margin-right: 10px;">
+                        <p>A projekt célja egy olyan könyvtáros nyilvántartó alkalmazás elkészítése, amely lehetőséget
+                            nyújt könyvek és olvasók adatainak tárolására, valamint megkönnyíti a kölcsönzések
+                            kezelését.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="about-text">
-                        <h4>Könyvek nyilvántartása</h4>
-                        <ul>
-                            <li>Könyvek adatainak és példányainak tárolása</li>
-                            <li>Új könyvek, példányok felvétele</li>
-                            <li>Kölcsönzési információk megtekintése</li>
-                            <li>Könyvkeresés több adat szerint</li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-text">
+                    <h4>Könyvek nyilvántartása</h4>
+                    <ul>
+                        <li>Könyvek adatainak és példányainak tárolása</li>
+                        <li>Új könyvek, példányok felvétele</li>
+                        <li>Kölcsönzési információk megtekintése</li>
+                        <li>Könyvkeresés több adat szerint</li>
+                    </ul>
                 </div>
-                <div class="col-md-4">
-                    <div class="about-text">
-                        <h4>Olvasók nyilvántartása</h4>
-                        <ul>
-                            <li>Regisztráció kölcsönzéshez</li>
-                            <li>Olvasói adatok tárolása</li>
-                            <li>Olvasók kölcsönzéseinek nyomonkövetése</li>
-                            <li>Késedelmi díjak kivetése</li>
-                            <li>Befizetések rögzítése</li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-text">
+                    <h4>Olvasók nyilvántartása</h4>
+                    <ul>
+                        <li>Regisztráció kölcsönzéshez</li>
+                        <li>Olvasói adatok tárolása</li>
+                        <li>Olvasók kölcsönzéseinek nyomonkövetése</li>
+                        <li>Késedelmi díjak kivetése</li>
+                        <li>Befizetések rögzítése</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <div id="footer">
-        <div class="container">
-            <p>Copyright &copy; Projekt eszközök csapat</p>
-        </div>
+</div>
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <p>Copyright &copy; Projekt eszközök csapat</p>
     </div>
+</div>
 
 </body>
 
