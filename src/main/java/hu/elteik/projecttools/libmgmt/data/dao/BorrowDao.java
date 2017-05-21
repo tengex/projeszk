@@ -1,6 +1,7 @@
 package hu.elteik.projecttools.libmgmt.data.dao;
 
 import hu.elteik.projecttools.libmgmt.data.entity.Borrow;
+import hu.elteik.projecttools.libmgmt.data.entity.Copy;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,4 +10,5 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public interface BorrowDao extends CrudRepository<Borrow, Long> {
+    Borrow findByCopy(Copy copy);
 }

@@ -152,29 +152,33 @@ th:if="${user.username} == 'admin'"
                                 copyStatus
                             </td>
                             <td th:if="${isAdmin}" class="text-center">
-                                <select th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">
-                                    <option value="felh1">felhasznalo1</option>
-                                    <option value="felh2">felhasznalo2</option>
-                                    <option value="felh3">felhasznalo3</option>
-                                    <option value="felh4">felhasznalo4</option>
-                                    <option value="felh5">felhasznalo5</option>
-                                </select>
-                                <button class="btn btn-success btn-xs"
-                                        th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">
-                                    Kölcsönzés
-                                </button>
-                                <button class="btn btn-danger btn-xs"
-                                        th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).BORROWED)}">
-                                    Kölcsönzés lezárása
-                                </button>
+                                <form th:action="@{/borrow}+${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)?'':'_del'}"
+                                      th:method="POST">
+                                    <input type="hidden" th:id="copyId" th:name="copyId" th:value="${copy.copyId}"/>
+                                    <select th:name="borrow"
+                                            th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">
+                                        <option value="">Felhasználók</option>
+                                        <option th:each="user : ${userList}" th:id="${'borrow_' + user.username}"
+                                                th:name="${'borrow_' + user.username}" th:value="${user.username}"
+                                                th:text="${user.username}"></option>
+                                    </select>
+                                    <button type="submit" class="btn btn-success btn-xs"
+                                            th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).AVAILABLE)}">
+                                        Kölcsönzés
+                                    </button>
+                                    <button type="submit" class="btn btn-danger btn-xs"
+                                            th:if="${(copy.copyStatus == T(hu.elteik.projecttools.libmgmt.util.CopyStatus).BORROWED)}">
+                                        Kölcsönzés lezárása
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </table>
                     <br/>
-                    <form th:if="${isAdmin}" role="form" id="addCopyForm_1"
+                    <form th:if="${isAdmin}" th:action="@{/add_copies}" role="form" id="addCopyForm_1"
                           th:id="'addCopyForm_' + ${book.bookId}" th:attr="data-toggle='validator'" method="post">
                         <div class="form-group">
-                            <label for="addCopyCount">Új példányok száma</label>
+                            <label for="addCopyCount_1">Új példányok száma</label>
                             <input type="number" id="addCopyCount_1" th:id="'addCopyCount_' + ${book.bookId}"
                                    name="addCopyCount" class="form-control"
                                    th:attr="min=1, data-required-error='Kérjük adja meg az új példányok számát!', required=true, data-min-error='Kérem válasszon egy 0-nál nagyobb értéket!'"/>
@@ -201,46 +205,47 @@ th:if="${user.username} == 'admin'"
                     </button>
                     <h4 class="modal-title">Új könyv felvétele</h4>
                     <br/>
-                    <form id="addBookForm" role="form" th:attr="data-toggle='validator'" method="post">
+                    <form id="addBookForm" role="form" th:attr="data-toggle='validator'" th:action="@{/add_book}" th:method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="addBookTitle">Cím</label>
-                                <input type="text" id="addBookTitle" name="addBookTitle" class="form-control"
+                                <input type="text" id="addBookTitle" name="title" class="form-control"
                                        th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookSubtitle">Alcím</label>
-                                <input type="text" id="addBookSubtitle" name="addBookSubtitle" class="form-control"/>
+                                <input type="text" id="addBookSubtitle" name="subtitle" class="form-control"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookAuthor">Szerző</label>
-                                <input type="text" id="addBookAuthor" name="addBookAuthor" class="form-control"
+                                <input type="text" id="addBookAuthor" name="author" class="form-control"
                                        th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookPublisher">Kiadó</label>
-                                <input type="text" id="addBookPublisher" name="addBookPublisher" class="form-control"
+                                <input type="text" id="addBookPublisher" name="publisher" class="form-control"
                                        th:attr="data-required-error='A mező kitöltése kötelező!', required=true"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookYear">Kiadás éve</label>
-                                <input type="text" id="addBookYear" name="addBookYear" class="form-control"
+                                <input type="text" id="addBookYear" name="year" class="form-control"
                                        th:attr="data-required-error='A mező kitöltése kötelező!', required=true, pattern='^\d{4}$', data-pattern-error='Nem megfelelő formátum!'"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookIsbn">ISBN</label>
-                                <input type="text" id="addBookIsbn" name="addBookIsbn" class="form-control"
+                                <input type="text" id="addBookIsbn" name="isbn" class="form-control"
                                        th:attr="data-required-error='A mező kitöltése kötelező!', required=true, pattern='^\d{3,}$', data-pattern-error='Nem megfelelő formátum!'"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="addBookDetails">Részletek</label>
-                                <input type="text" id="addBookDetails" name="addBookDetails" class="form-control"/>
+                                <input type="text" id="addBookDetails" name="details" class="form-control"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">

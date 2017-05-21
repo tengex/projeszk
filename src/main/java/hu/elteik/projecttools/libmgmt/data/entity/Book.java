@@ -124,4 +124,19 @@ public class Book {
     public void setCopies(Set<Copy> copies) {
         this.copies = copies;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", year=" + year +
+                ", isbn='" + isbn + '\'' +
+                ", details='" + details + '\'' +
+                ", copies=" + copies.size() +
+                '}';
+    }
 }
