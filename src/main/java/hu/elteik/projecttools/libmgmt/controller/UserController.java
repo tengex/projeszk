@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User user, Model model) {
+    public String registration(@ModelAttribute("userForm") User user) {
         logger.warning("DBG USR: " + user.getUsername() + ": " + user.getRole());
         User u = userDao.findByUsername(user.getUsername());
         if (u == null) {
@@ -57,22 +58,21 @@ public class UserController {
 
         return "login";
     }
+
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response){
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(auth!=null){
-            new SecurityContextLogoutHandler().logout(request,response,auth);
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/index?logout";
     }
 
     @RequestMapping("/profile")
-    public String profile(Map<String, Object> model) {
-        //A bejelentkezett user adatait kell majd itt átadni
-        User user = new User("sheenjek", "Vickey R. Frye", "VickeyRFrye@teleworm.us", "434-454-3937", "1167 Worley Avenue 25", "admin", "ROLE_USER");
-        user.setPaidAmount(315);
-        user.setFeeAmount(400);
-        model.put("user", user);
+    public String profile(Map<String, Object> model, Principal principal) {
+        model.put("user", userDao.findByUsername(principal.getName()));
+        if (principal != null)
+            model.put("currentUser", principal.getName());
         return "profile";
     }
 

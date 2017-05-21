@@ -34,7 +34,7 @@ public class BookListController {
     public String book_list(Map<String, Object> model, Principal principal) {
         List<Book> bookList = createTestBookList();
         model.put("bookList", bookList);
-        if(principal != null) {
+        if (principal != null) {
             model.put("user", userDao.findByUsername(principal.getName()));
             model.put("currentUser", principal.getName());
         }
