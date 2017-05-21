@@ -38,8 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/user_list").hasAnyAuthority("ROLE_ADMIN","ROLE_LIBRARIAN")
                 .antMatchers("/css/**", "/js/**", "/img/**", "/font/**", "/", "/index", "/registration", "/book_list").permitAll()
-                .antMatchers("/user_list").hasAnyRole("ROLE_ADMIN","ROLE_LIBRARIAN")
                 .anyRequest().authenticated()
                 .and()
 
@@ -48,10 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .logout().logoutSuccessUrl("/index").permitAll()
-                .and().csrf().csrfTokenRepository(csrfTokenRepository())
-        //.and().exceptionHandling().accessDeniedPage("/TODO_PAGE_IF_REQUIRED")
-        ;
-
+                .and().csrf().csrfTokenRepository(csrfTokenRepository());
     }
 
     private CsrfTokenRepository csrfTokenRepository() {

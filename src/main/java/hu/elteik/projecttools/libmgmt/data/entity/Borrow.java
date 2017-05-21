@@ -24,6 +24,9 @@ public class Borrow {
     @JoinColumn(name = "copy_id")
     private Copy copy;
 
+    @Transient
+    private Book book;
+
     private Date borrowDate;
 
     private Date expiryDate;
@@ -98,5 +101,13 @@ public class Borrow {
 
     public void setStatus(BorrowStatus status) {
         this.status = status;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

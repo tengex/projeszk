@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,12 +69,34 @@ public class UserController {
         return "redirect:/index?logout";
     }
 
-    @RequestMapping("/profile")
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile(Map<String, Object> model, Principal principal) {
-        model.put("user", userDao.findByUsername(principal.getName()));
-        if (principal != null)
+        if (principal != null) {
+            model.put("user", userDao.findByUsername(principal.getName()));
             model.put("currentUser", principal.getName());
+        }
         return "profile";
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.PUT)
+    public String profile(Principal principal,
+            @RequestParam(name = "profile_fullname") String fullName,
+            @RequestParam(name = "profile_email") String email,
+            @RequestParam(name = "profile_tel") String phoneNum,
+            @RequestParam(name = "profile_address") String address){
+        User user = userDao.findByUsername(principal.getName());
+        user.setFullName(fullName);
+        user.setEmail(email);
+        user.setPhoneNum(phoneNum);
+        user.setAddress(address);
+        userDao.save(user);
+        return "redirect:/profile";
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.DELETE)
+    public String deleteProfile(Principal principal){
+        userDao.delete(userDao.findByUsername(principal.getName()));
+        return "redirect:/logout";
     }
 
 }

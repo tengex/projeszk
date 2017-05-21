@@ -66,15 +66,15 @@ th:if="${user.username} == 'admin'"
             </tr>
             <tr th:each="borrow : ${borrowList}" id="borrow_1_row" th:id="'borrow_' + ${borrow.borrowId} + '_row'">
                 <td class="borrowId text-center" th:text="${borrow.borrowId}">23</td>
-                <td class="username" th:text="${borrow.username}">username</td>
-                <td><span class="bookTitle" th:text="${borrow.title}">cím</span>
+                <td class="username" th:text="${borrow.user.username}">username</td>
+                <td><span class="bookTitle" th:text="${borrow.book.title}">cím</span>
                     <br/>
                     <small>
-                        <em class="bookSubtitle" th:text="${borrow.subtitle}">alcím</em>
+                        <em class="bookSubtitle" th:text="${borrow.book.subtitle}">alcím</em>
                     </small>
                 </td>
-                <td class="bookAuthor" th:text="${borrow.author}">szerző</td>
-                <td class="bookIsbn" th:text="${borrow.isbn}">isbn</td>
+                <td class="bookAuthor" th:text="${borrow.book.author}">szerző</td>
+                <td class="bookIsbn" th:text="${borrow.book.isbn}">isbn</td>
                 <td class="text-center">
                     <small class="borrowDate" th:text="${#dates.format(borrow.borrowDate, 'yyyy.MM.dd.')}">2017.05.15.
                     </small>
@@ -95,9 +95,12 @@ th:if="${user.username} == 'admin'"
                         </span>
                         <span class="borrowCloseButton"
                               th:if="${borrow.closeDate == null and isAdmin}">
-                            <button class="btn btn-danger btn-xs">Lezárás</button>
+                            <form th:action="@{/borrow_del}" th:method="POST">
+                                <input type="hidden" th:id="copyId" th:name="copyId" th:value="${borrow.copy.copyId}"/>
+                                <button type="submit" class="btn btn-danger btn-xs">Lezárás</button>
+                            </form>
                         </span>
-                        <span class="borrowCloseDate" th:if="${borrow.closeDate == null and isAdmin}">
+                        <span class="borrowCloseDate" th:if="${borrow.closeDate == null and !isAdmin}">
                             <span class="label label-warning">Aktív</span>
                         </span>
                 </td>

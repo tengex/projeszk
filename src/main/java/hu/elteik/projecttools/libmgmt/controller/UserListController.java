@@ -1,12 +1,18 @@
 package hu.elteik.projecttools.libmgmt.controller;
 
+import hu.elteik.projecttools.libmgmt.data.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.*;
 
 import hu.elteik.projecttools.libmgmt.data.entity.*;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * Admin / user kezelése auth nélkül:
@@ -22,81 +28,29 @@ import hu.elteik.projecttools.libmgmt.data.entity.*;
 
 @Controller
 public class UserListController {
-    @RequestMapping("/user_list")
+
+    @Autowired
+    UserDao userDao;
+
+    @RequestMapping(value = "/user_list", method = RequestMethod.GET)
     public String user_list(Map<String, Object> model, Principal principal) {
-        List<User> userList = createTestUserList();
+        List<User> userList = new ArrayList<>();
+        Iterator<User> userIterator = userDao.findAll().iterator();
+        userIterator.forEachRemaining(userList::add);
         model.put("userList", userList);
         if (principal != null)
             model.put("currentUser", principal.getName());
         return "user_list";
     }
 
-    private List<User> createTestUserList() {
-        List<User> userList = new ArrayList<>();
-        User user1 = new User("sheenjek", "Vickey R. Frye", "VickeyRFrye@teleworm.us", "434-454-3937",
-                "1167 Worley Avenue 25", "66ZkYm", "ROLE_USER");
-        User user2 = new User("malheur", "Micah S. Church", "malheur@Smth.com", "830-249-0849",
-                "1401 Morris Street 1", "uYq7t3", "ROLE_USER");
-        User user3 = new User("rogue", "Frédérique Abma", "FrederiqueAbma@teleworm.us", "615-525-9635",
-                "4001 Green Street 5", "2ZbD9a", "ROLE_USER");
-        User user4 = new User("haley", "Iona Verhaag", "IonaVerhaag@armyspy.com", "040-536-400",
-                "5541 Parmova 17", "Z4gTK8", "ROLE_USER");
-        User user5 = new User("rosie", "Hedvige Daigneault", "HedvigeDaigneault@rhyta.com", "051-363-579",
-                "2223 Jurovski Dol 5", "V4yeME", "ROLE_USER");
-        User user6 = new User("norman", "Jun Fu", "JunFu@dayrep.com", "031-851-725",
-                "220 Skofja Loka Tavcarjeva 97", "EEpH3j", "ROLE_USER");
-        User user7 = new User("poppy", "Jens Heilmann", "JensHeilmann@teleworm.us", "031-397-528",
-                "6274 Smarje Tavcarjeva 9", "PdLq9L", "ROLE_USER");
-        User user8 = new User("eclipse", "Burnell Boncoeur", "BurnellBoncoeur@rhyta.com", "070-393-507",
-                "3314 Braslovce Trg revolucije 13", "qVzt5Z", "ROLE_USER");
-        User user9 = new User("saint", "Callum James", "CallumJames@dayrep.com", "031-085-623", "9224 Turnisce",
-                "Z73f4J", "ROLE_USER");
-        User user10 = new User("cocoa", "Bernd Herzog", "BerndHerzog@teleworm.us", "051-288-941",
-                "2331 Pragersko Turjaska 35", "aU7d9G", "ROLE_USER");
-        User user11 = new User("qt312", "Ariam Mewael", "AriamMewael@rhyta.com", "051-554-891",
-                "3264 Sveti Stefan Dunajska 113", "ZQj8E9", "ROLE_USER");
-        User user12 = new User("Aquarius", "Jimmy S. Barrera", "JimmySBarrera@jourrapide.com", "609-641-7808",
-                "2815 Moonlight Drive", "Bobeil", "ROLE_USER");
-
-        user1.setPaidAmount(315);
-        user2.setPaidAmount(150);
-        user3.setPaidAmount(0);
-        user4.setPaidAmount(50);
-        user5.setPaidAmount(0);
-        user6.setPaidAmount(465);
-        user7.setPaidAmount(175);
-        user8.setPaidAmount(235);
-        user9.setPaidAmount(250);
-        user10.setPaidAmount(205);
-        user11.setPaidAmount(320);
-        user12.setPaidAmount(0);
-
-        user1.setFeeAmount(400);
-        user2.setFeeAmount(100);
-        user3.setFeeAmount(930);
-        user4.setFeeAmount(100);
-        user5.setFeeAmount(0);
-        user6.setFeeAmount(400);
-        user7.setFeeAmount(50);
-        user8.setFeeAmount(0);
-        user9.setFeeAmount(0);
-        user10.setFeeAmount(35);
-        user11.setFeeAmount(5);
-        user12.setFeeAmount(10);
-
-        userList.add(user1);
-        userList.add(user2);
-        userList.add(user3);
-        userList.add(user4);
-        userList.add(user5);
-        userList.add(user6);
-        userList.add(user7);
-        userList.add(user8);
-        userList.add(user9);
-        userList.add(user10);
-        userList.add(user11);
-        userList.add(user12);
-
-        return userList;
+    @RequestMapping(value = "/user_list", method = RequestMethod.POST)
+    public String user_list(@RequestBody String postPayload){
+        String payAmountString = postPayload.split("&_csrf")[0];
+        String username = payAmountString.split("=")[0].split("_")[1];
+        int payAmountValue=Integer.parseInt(payAmountString.split("=")[1]);
+        User user = userDao.findByUsername(username);
+        user.setPaidAmount(user.getPaidAmount() + payAmountValue);
+        userDao.save(user);
+        return "redirect:user_list";
     }
 }
