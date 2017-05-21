@@ -21,7 +21,7 @@ public class User {
     @NotNull
     private String username;
 
-    @NotNull
+    //@NotNull
     private String fullName;
 
     @NotNull
@@ -42,6 +42,9 @@ public class User {
 
     private Integer feeAmount;
 
+    @NotNull
+    private String role;
+
     @ManyToMany
     @JoinColumn(name = "borrow_id")
     private Set<Borrow> borrows = new HashSet<>();
@@ -51,10 +54,14 @@ public class User {
     private Set<Appointment> appointments = new HashSet<>();
 
     public User() {
+        this.role="ROLE_USER";
+        this.paidAmount=0;
+        this.feeAmount=0;
+        this.status=UserStatus.ACTIVE;
     }
 
     //called when inserting new user
-    public User(String username, String fullName, String email, String phoneNum, String address, String password) {
+    public User(String username, String fullName, String email, String phoneNum, String address, String password, String role) {
         this.username = username;
         this.fullName = fullName;
         this.email = email;
@@ -64,6 +71,7 @@ public class User {
         this.status = UserStatus.ACTIVE;
         this.paidAmount = 0;
         this.feeAmount = 0;
+        this.role=role;
     }
 
     public Long getUserId() {
@@ -160,5 +168,9 @@ public class User {
 
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
