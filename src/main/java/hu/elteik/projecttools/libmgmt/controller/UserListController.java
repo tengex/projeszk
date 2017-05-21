@@ -1,5 +1,7 @@
 package hu.elteik.projecttools.libmgmt.controller;
 
+import hu.elteik.projecttools.libmgmt.data.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,9 +24,16 @@ import hu.elteik.projecttools.libmgmt.data.entity.*;
 
 @Controller
 public class UserListController {
+
+    @Autowired
+    UserDao userDao;
+
     @RequestMapping("/user_list")
     public String user_list(Map<String, Object> model, Principal principal) {
-        List<User> userList = createTestUserList();
+        //List<User> userList = createTestUserList();
+        List<User> userList = new ArrayList<>();
+        Iterator<User> usrIt = userDao.findAll().iterator();
+        usrIt.forEachRemaining(userList::add);
         model.put("userList", userList);
         if (principal != null)
             model.put("currentUser", principal.getName());

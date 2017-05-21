@@ -70,9 +70,10 @@ public class UserController {
 
     @RequestMapping("/profile")
     public String profile(Map<String, Object> model, Principal principal) {
-        model.put("user", userDao.findByUsername(principal.getName()));
-        if (principal != null)
+        if (principal != null) {
+            model.put("user", userDao.findByUsername(principal.getName()));
             model.put("currentUser", principal.getName());
+        }
         return "profile";
     }
 
