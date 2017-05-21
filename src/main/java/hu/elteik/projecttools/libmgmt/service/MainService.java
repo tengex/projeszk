@@ -43,26 +43,8 @@ public class MainService {
 
     @PostConstruct
     public void init() {
-        //initialization goes here; todo: some exception handling if these fail
         insertTestValues();
-        //testDbValues();
         logger.info("Application started");
-    }
-
-    //todo scheduled task which sets expired borrow status and adds delay fee to user!
-
-    private void testDbValues() {
-        for (Book b : bookDao.findAll()) { //get all persisted books
-            logger.info(b.getTitle());
-        }
-        User u = userDao.findByUsername("user1"); //get a specific persisted user
-        logger.info(u.getFullName());
-        logger.info(u.getBorrows().size() + "");
-        for (Borrow b : u.getBorrows()) //get all borrows of selected user
-            logger.info(b.getBorrowDate() + " " + b.getCopy().getCopyId());
-
-        for (Appointment a : appointmentDao.findAll())
-            logger.info(a.getUser().getFullName() + " " + a.getBook().getTitle());
     }
 
     @Autowired

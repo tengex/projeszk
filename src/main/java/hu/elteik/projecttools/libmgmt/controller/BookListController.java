@@ -91,6 +91,12 @@ public class BookListController {
         borrow.setStatus(BorrowStatus.CLOSED);
         borrowDao.save(borrow);
         String referer = request.getHeader("Referer");
+        if(borrow.getExpiryDate().before(borrow.getCloseDate())){
+            User user = borrow.getUser();
+            int sum =  user.getFeeAmount() + 300;
+            user.setFeeAmount(sum);
+            userDao.save(user);
+        }
         if(referer != null && !"".equals(referer))
             return "redirect:"+referer;
         else

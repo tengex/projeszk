@@ -48,10 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .logout().logoutSuccessUrl("/index").permitAll()
-                .and().csrf().csrfTokenRepository(csrfTokenRepository())
-        //.and().exceptionHandling().accessDeniedPage("/TODO_PAGE_IF_REQUIRED")
-        ;
-
+                .and().csrf().csrfTokenRepository(csrfTokenRepository());
     }
 
     private CsrfTokenRepository csrfTokenRepository() {
