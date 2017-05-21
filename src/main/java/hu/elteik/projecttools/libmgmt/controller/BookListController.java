@@ -14,6 +14,8 @@ import java.util.*;
 import hu.elteik.projecttools.libmgmt.data.entity.*;
 import hu.elteik.projecttools.libmgmt.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Admin / user kezelése auth nélkül:
  * <p>
@@ -79,7 +81,7 @@ public class BookListController {
     }
 
     @RequestMapping(value = "/borrow_del", method = RequestMethod.POST)
-    public String closeExistingBorrow(@RequestBody String postPayload) {
+    public String closeExistingBorrow(@RequestBody String postPayload, HttpServletRequest request) {
         Copy copy = copyDao.findOne(Long.parseLong(postPayload.split("&")[0].split("=")[1]));
         Borrow borrow = borrowDao.findByCopy(copy);
         copy.setCopyStatus(CopyStatus.AVAILABLE);
@@ -88,7 +90,12 @@ public class BookListController {
         borrow.setCopy(copy);
         borrow.setStatus(BorrowStatus.CLOSED);
         borrowDao.save(borrow);
-        return "redirect:/book_list";
+        String referer = request.getHeader("Referer");
+        if(referer != null && !"".equals(referer))
+            return "redirect:"+referer;
+        else
+            return "redirect:/book_list";
+
     }
 
     @RequestMapping(value = "/add_book", method = RequestMethod.POST)
