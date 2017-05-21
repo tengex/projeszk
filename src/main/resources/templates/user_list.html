@@ -48,7 +48,7 @@
                 <td class="balance text-center" th:text="${balance + ' HUF'}">–300 HUF</td>
                 <td class="text-center">
                     <form id="payForm_username" th:id="${'payForm_' + userData.username}" role="form"
-                          th:attr="data-toggle='validator'" action="#">
+                          th:attr="data-toggle='validator'" th:action="@{/user_list}" method="POST">
                         <div class="input-group form-group">
                             <input type="number" id="payAmount_username" name="payAmount_username"
                                    th:id="${'payAmount_' + userData.username}"
