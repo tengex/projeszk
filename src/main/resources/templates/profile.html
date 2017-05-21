@@ -122,7 +122,8 @@
 
                     <h4 class="modal-title">Adatok szerkesztése</h4>
                     <br/>
-                    <form id="modalForm" role="form" th:attr="data-toggle='validator'" action="#" method="post">
+                    <form id="modalForm" role="form" th:attr="data-toggle='validator'" th:action="@{/profile}"
+                          th:method="PUT">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label" for="profile_fullname">Teljes név:</label>
@@ -169,19 +170,21 @@
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <i>
-                        <h3 class="modal-title">Biztosan törölni szeretné a profilját?</h3>
-                    </i>
-                    <button class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> Vickey R. Frye</span>
-                    </button>
-                </div>
+                <form role="form" th:action="@{/profile}" th:method="DELETE">
+                    <div class="modal-header">
+                        <i>
+                            <h3 class="modal-title">Biztosan törölni szeretné a profilját?</h3>
+                        </i>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span th:text="${currentUser}">Unknown</span>
+                        </button>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Nem</button>
-                    <button type="button" class="btn btn-success">Igen</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Nem</button>
+                        <button type="submit" class="btn btn-success">Igen</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
