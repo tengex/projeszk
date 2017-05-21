@@ -19,46 +19,15 @@
 
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand page-scroll" href="#page-top">
-                <i class="fa fa-paper-plane-o"></i> BESTLIB</a>
-        </div>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
-        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <li class="hidden"><a href="#page-top"></a></li>
-                <!--<li> <a class="page-scroll" href="#content">Könyveink</a> </li>-->
-                <li><a href="index.html" th:href="@{/index}">Főoldal</a></li>
-                <li><a href="book_list.html" th:href="@{/book_list}">Könyveink</a></li>
-                <!-- Belepes utan lathato menupontok OLVASOKNAK -->
-                <li><a>|</a></li>
-                <li><a href="profile.html" th:href="@{/profile}">Adataim</a></li>
-                <li><a href="borrow_list.html" th:href="@{/borrow_list}">Kölcsönzések</a></li>
-                <!-- Belepes utan lathato menupontok KONYVTAROSNAK -->
-                <li><a href="user_list.html" th:href="@{/user_list}">Olvasóink</a></li>
-                <!-- Bejelentkezes elott lathato menupontok -->
-                <li><a>|</a></li>
-                <li><a href="registration.html" th:href="@{/registration}">Regisztráció</a></li>
-                <li><a href="login.html" th:href="@{/login}">Belépés</a></li>
-                <!-- Bejelentkezes utan lathato menupont -->
-                <!--<li> <a href="#works">Logout</a> </li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
 <div id="content">
     <div class="container form-container">
         <div class="row">
             <div class="col-md-6">
 
-                <form class="form-horizontal" role="form" th:action="@{/login}" method="POST" th:attr="data-toggle='validator'">
+                <form class="form-horizontal" role="form" th:action="@{/login}" method="POST"
+                      th:attr="data-toggle='validator'">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
                     <fieldset>

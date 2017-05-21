@@ -1,12 +1,16 @@
 package hu.elteik.projecttools.libmgmt.controller;
 
+import hu.elteik.projecttools.libmgmt.data.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.*;
 
 import hu.elteik.projecttools.libmgmt.data.entity.*;
 import hu.elteik.projecttools.libmgmt.util.*;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Admin / user kezelése auth nélkül:
@@ -23,13 +27,17 @@ import hu.elteik.projecttools.libmgmt.util.*;
 @Controller
 public class BookListController {
 
-    @RequestMapping("/book_list")
-    public String book_list(Map<String, Object> model) {
+    @Autowired
+    UserDao userDao;
+
+    @RequestMapping(value = "/book_list", method = RequestMethod.GET)
+    public String book_list(Map<String, Object> model, Principal principal) {
         List<Book> bookList = createTestBookList();
-        User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin", "ROLE_ADMIN");
-        //User user = new User("valaki", "Valaki", "Valaki@bestlib.hu", "06702222222", "Budapest", "valami");
         model.put("bookList", bookList);
-        model.put("user", user);
+        if(principal != null) {
+            model.put("user", userDao.findByUsername(principal.getName()));
+            model.put("currentUser", principal.getName());
+        }
         return "book_list";
     }
 

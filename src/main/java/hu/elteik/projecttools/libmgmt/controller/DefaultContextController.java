@@ -20,7 +20,6 @@ public class DefaultContextController {
 
         @RequestMapping("/index")
         public String index(Map<String, Object> model, Principal principal) {
-                //User usr = (User)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
                 if(principal!= null)
                 model.put("currentUser", principal.getName());
                 return "index";
