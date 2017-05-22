@@ -8,6 +8,10 @@ import java.util.Date;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+
+/**
+ * Object representation of database entity (row) from the "borrows" table.
+ */
 @Entity
 @Table(name = "borrows")
 public class Borrow {
@@ -24,6 +28,10 @@ public class Borrow {
     @JoinColumn(name = "copy_id")
     private Copy copy;
 
+    /**
+     * A manually assigned Book instance which the copy refers to.
+     * We do not store this field in the database (hence the @Transient annotation)
+     */
     @Transient
     private Book book;
 
@@ -39,6 +47,13 @@ public class Borrow {
     public Borrow() {
     }
 
+    /**
+     * A borrow instance
+     *
+     * @param user       user
+     * @param copy       borrowed copy
+     * @param expiryDate borrow expiry date
+     */
     public Borrow(User user, Copy copy, Date expiryDate) {
         this.user = user;
         this.copy = copy;

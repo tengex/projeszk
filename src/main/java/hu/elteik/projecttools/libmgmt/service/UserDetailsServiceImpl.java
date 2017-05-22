@@ -17,14 +17,25 @@ import java.util.Set;
 /**
  * Created by Bázis on 2017. 05. 20..
  */
+
+/**
+ * Determines user authentication method.
+ * @see UserDetailsServiceImpl#loadUserByUsername(String)
+ */
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserDao userDao;
 
-    @Transactional(readOnly = true)
+    /**
+     * Defines an user's authorities and authentication method (user details are fetched from and inserted to database/users table)
+     * @param s String representation of the current user's username
+     * @return Spring Security user definition with defined authorities.
+     * @throws UsernameNotFoundException
+     */
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         User user = userDao.findByUsername(s);

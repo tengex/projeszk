@@ -7,8 +7,12 @@ import javax.persistence.*;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+
+/**
+ * Object representation of database entity (row) from the "copies" table.
+ */
 @Entity
-@Table(name="copies")
+@Table(name = "copies")
 public class Copy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +22,9 @@ public class Copy {
     @Enumerated(EnumType.STRING)
     private CopyStatus copyStatus;
 
+    /**
+     * A copy instance.
+     */
     public Copy() {
         this.copyStatus = CopyStatus.AVAILABLE;
     }

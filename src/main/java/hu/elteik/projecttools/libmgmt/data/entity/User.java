@@ -10,6 +10,9 @@ import java.util.Set;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+/**
+ * Object representation of database entity (row) from the "users" table.
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -53,6 +56,9 @@ public class User {
     @JoinColumn(name = "appointment_id")
     private Set<Appointment> appointments = new HashSet<>();
 
+    /**
+     * An "empty" user object with default values.
+     */
     public User() {
         this.role="ROLE_USER";
         this.paidAmount=0;
@@ -60,7 +66,16 @@ public class User {
         this.status=UserStatus.ACTIVE;
     }
 
-    //called when inserting new user
+    /**
+     * A user instance. Called when creating a new user.
+     * @param username username
+     * @param fullName full name
+     * @param email email
+     * @param phoneNum telephone number
+     * @param address address
+     * @param password password (encrypted)
+     * @param role role / authority
+     */
     public User(String username, String fullName, String email, String phoneNum, String address, String password, String role) {
         this.username = username;
         this.fullName = fullName;

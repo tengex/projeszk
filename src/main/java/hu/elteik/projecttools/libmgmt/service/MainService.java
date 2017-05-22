@@ -1,55 +1,67 @@
 package hu.elteik.projecttools.libmgmt.service;
 
 import hu.elteik.projecttools.libmgmt.data.dao.*;
-import hu.elteik.projecttools.libmgmt.data.entity.*;
+import hu.elteik.projecttools.libmgmt.data.entity.Book;
+import hu.elteik.projecttools.libmgmt.data.entity.Copy;
+import hu.elteik.projecttools.libmgmt.data.entity.Library;
+import hu.elteik.projecttools.libmgmt.data.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 /**
  * Created by Bázis on 2017. 04. 14..
  */
+
+/**
+ * Main service of the  application.<br />
+ * Initializes default settings and adds default database entries.
+ *
+ * @see MainService#init()
+ */
 @Service
 @Transactional
 public class MainService {
     private static final Logger logger = Logger.getLogger(MainService.class.getName());
-
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private PreferenceDao preferenceDao;
-
     @Autowired
     private UserDao userDao;
-
     @Autowired
     private AppointmentDao appointmentDao;
-
     @Autowired
     private BookDao bookDao;
-
     @Autowired
     private BorrowDao borrowDao;
-
     @Autowired
     private CopyDao copyDao;
-
     @Autowired
     private LibraryDao libraryDao;
 
-
+    /**
+     * After the MainService instance is created, this method will be called.
+     *
+     * @see MainService#insertTestValues()
+     */
     @PostConstruct
     public void init() {
         insertTestValues();
         logger.info("Application started");
     }
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    /**
+     * Inserts default rows into the database using autowired Data Access Object interfaces<br />
+     * The inserted values are: library data, default users, default borrowable books.
+     */
     private void insertTestValues() {
         //Lib
         libraryDao.save(new Library("BestLib", "libaddress", new Date(), "BestLib - best library ever")); //saves library data

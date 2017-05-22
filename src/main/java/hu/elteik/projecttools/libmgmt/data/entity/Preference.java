@@ -7,6 +7,10 @@ import javax.persistence.Table;
 /**
  * Created by Bázis on 2017. 04. 14..
  */
+
+/**
+ * Object representation of database entity (row) from the "preferences" table. We can store application-specific settings here.
+ */
 @Entity
 @Table(name = "preferences")
 public class Preference {

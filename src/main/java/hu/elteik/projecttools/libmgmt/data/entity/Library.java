@@ -7,6 +7,10 @@ import java.util.Date;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+
+/**
+ * Object representation of database entity (row) from the "library" table.
+ */
 @Entity
 public class Library {
     @Id
@@ -28,6 +32,14 @@ public class Library {
     public Library() {
     }
 
+    /**
+     * A library instance
+     *
+     * @param name                name
+     * @param address             address
+     * @param dateOfEstablishment date of establishment
+     * @param description         additional information
+     */
     public Library(String name, String address, Date dateOfEstablishment, String description) {
         this.name = name;
         this.address = address;
