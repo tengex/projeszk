@@ -8,6 +8,10 @@ import java.util.Set;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+
+/**
+ * Object representation of database entity (row) from the "books" table.
+ */
 @Entity
 @Table(name = "books")
 public class Book {
@@ -42,6 +46,18 @@ public class Book {
     public Book() {
     }
 
+    /**
+     * A book instance.
+     *
+     * @param isbn      isbn num
+     * @param details   additional details
+     * @param year      year
+     * @param publisher publisher
+     * @param subtitle  subtitle
+     * @param title     title
+     * @param author    author
+     * @param copies    set of copies
+     */
     public Book(String isbn, String details, Integer year, String publisher, String subtitle, String title, String author, Set<Copy> copies) {
         this.isbn = isbn;
         this.details = details;

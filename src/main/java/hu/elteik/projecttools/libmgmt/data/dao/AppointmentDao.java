@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Bázis on 2017. 04. 15..
  */
+
 @Transactional
-public interface AppointmentDao extends CrudRepository<Appointment, Long>{
+public interface AppointmentDao extends CrudRepository<Appointment, Long> {
 }

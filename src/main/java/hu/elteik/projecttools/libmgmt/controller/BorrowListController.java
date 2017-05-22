@@ -12,31 +12,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Admin / user kezelése auth nélkül:
- * <p>
- * User user = new User("admin", "Admin", "admin@bestlib.hu", "06702222222", "Budapest", "admin");
- * vagy
- * User user = new User("valaki", "Valaki", "Valaki@bestlib.hu", "06702222222", "Budapest", "valami");
- * <p>
- * model.put("user", user);
- * <p>
- * Thymeleaf template jelenleg ez alapján dönti el a felhasználó jogkörét
+ * A Spring Controller which manages the /borrow_list page (HTTP requests, forms).
+ * Fills the model with values from the database and sends them to the view.
  */
-
 @Controller
 public class BorrowListController {
     @Autowired
-    BorrowDao borrowDao;
+    private BorrowDao borrowDao;
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @Autowired
-    BookDao bookDao;
+    private BookDao bookDao;
 
+    /**
+     * Handles GET requests for the /borrow_list endpoint.
+     * Initializes borrow list and user list; puts them in the model available to the view.
+     * Manages user roles and view permissions.
+     *
+     * @param model     model Map available to the current view
+     * @param principal User authority
+     * @return the current view
+     */
     @RequestMapping("/borrow_list")
     public String borrow_list(Map<String, Object> model, Principal principal) {
         if (principal != null) {
